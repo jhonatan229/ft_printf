@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/22 17:49:30 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/22 18:47:05 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void set_flags(t_flags *flags)
 	flags->presition = 0;
 	flags->sinal = 0;
 	flags->width = 0;
+	flags->zero = 0;
 }
 
 int	ft_printf(const char *str, ...)

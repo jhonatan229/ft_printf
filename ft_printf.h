@@ -13,8 +13,10 @@ typedef	struct	s_ft_printf
 	int		presition;
 	int		sinal;
 	int		dot;
+	int		zero;
 }				t_flags;
 
 int	ft_printf(const char *str, ...);
+int pupulate_flags(t_flags *flag);
 
 #endif
