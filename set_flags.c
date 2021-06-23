@@ -6,20 +6,21 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/22 18:52:14 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/23 13:18:28 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
-static void get_number(t_flags flag)
+static void get_number(t_flags *flag)
 {
 	char *str;
 	int start;
 
-	start = flag->str[flag->pos_str];
-	while (ft_isalnum(flag->str[flag->pos_str]) != 0)
+	start = flag->pos_str;
+	while (ft_isdigit(flag->str[flag->pos_str]) != 0)
 		flag->pos_str++;
 	str = ft_substr(flag->str, start, flag->pos_str);
 	if (flag->dot)
@@ -39,18 +40,18 @@ int pupulate_flags(t_flags *flag)
 	}
 	else if (flag->str[flag->pos_str] == '0')
 	{
-		flag->zero = 0;
+		flag->zero = 1;
 		flag->pos_str++;
 	}
 	while (flag->str[flag->pos_str] != 0)
 	{
 		if (flag->str[flag->pos_str] == '.')
 			flag->dot = 1;
-		else if (ft_isalnum(flag->str[flag->pos_str]))
+		else if (ft_isdigit(flag->str[flag->pos_str]))
 			get_number(flag);
 		else
 			break;
 		flag->pos_str++;
 	}
-
+	return (0);
 }

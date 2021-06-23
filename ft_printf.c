@@ -6,25 +6,19 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/22 18:47:05 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/23 12:58:11 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 static void verify_type(va_list list, t_flags *flag)
 {
-	populate_flags(flag);
-	if(s[count]== 's')
-		ft_putstr_fd(va_arg(list, char*), 1);
-	else if (s[count]== 'd' || s[count]== 'i')
-		ft_putnbr_fd(va_arg(list, int), 1);
-	else if (s[count]== 'c')
-		ft_putchar_fd(s, 1);
-	else if (s[count]== 'f')
-		ft_printf(" ((working that)) ");
-	
+	int n;
+
+	n = pupulate_flags(flag);
 }
 
 static void set_flags(t_flags *flags)
@@ -42,20 +36,21 @@ int	ft_printf(const char *str, ...)
 	va_list list;
 	t_flags	flags;
 
-	set_flags(flags);
-	ft_memcpy(flags->str, str, ft_strlen(str));
+	set_flags(&flags);
+	flags.str = ft_substr(str, 0, ft_strlen(str));
 	va_start(list, str);
-	while (str[flags->pos_str] != 0)
+	while (str[flags.pos_str] != 0)
 	{
-		if (str[flags->pos_str] == '%')
+		if (str[flags.pos_str] == '%')
 		{
-			flags->pos_str++;
-			verify_type(str, list, flags->pos_str, flags);
+			flags.pos_str++;
+			verify_type(list, &flags);
 		}
 		else
-			ft_putchar_fd(str[flags->pos_str], 1);
-		flags->pos_str++;
+			ft_putchar_fd(flags.str[flags.pos_str], 1);
+		flags.pos_str++;
 	}
+	printf("--------------\n count: %i\n dot: %i\n presition: %i\n sinal: %i\n width: %i\n zero: %i\n", flags.pos_str, flags.dot, flags.presition, flags.sinal, flags.width, flags.zero);
 	va_end(list);
-	return (flags->pos_str);
+	return (flags.pos_str);
 }
