@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/23 23:17:45 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/24 11:13:12 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void verify_type(va_list list, t_flags *flag)
 		set_char(list, flag);
 	else if (flag->str[flag->pos_str] == 's')
 		set_string(list, flag);
+	else if (flag->str[flag->pos_str] == 'd' || flag->str[flag->pos_str] == 'i')
+		set_integer(list, flag);
 	set_flags(flag, 1);
 }
 
