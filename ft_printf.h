@@ -16,7 +16,9 @@ typedef	struct	s_ft_printf
 	int		zero;
 }				t_flags;
 
-int	ft_printf(const char *str, ...);
-int pupulate_flags(t_flags *flag);
+int		ft_printf(const char *str, ...);
+int		pupulate_flags(va_list list, t_flags *flag);
+void	set_char(va_list list, t_flags *flag);
+void	set_string(va_list list, t_flags *flag);
 
 #endif
