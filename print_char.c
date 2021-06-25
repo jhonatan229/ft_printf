@@ -6,16 +6,16 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:13:06 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/23 23:28:45 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/25 13:46:57 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-void set_char(va_list list, t_flags *flag)
+void	set_char(va_list list, t_flags *flag)
 {
-	int point;
+	int	point;
 
 	point = 0;
 	if (flag->width > 0)

@@ -4,9 +4,9 @@ LIB = libft.a
 
 LIB_PATH = ./libft/
 
-FILES = ft_printf.c
+FILES = ft_printf.c set_flags.c print_char.c print_string.c print_integer.c
 
-OBJ = ft_printf.o
+OBJ = ft_printf.o set_flags.o print_char.o print_string.o print_integer.o
 
 CC = clang
 
@@ -24,10 +24,10 @@ $(OBJ): $(FILES)
 	$(CC) $(FLAGS) -c $(FILES)
 
 test:
-	$(CC) $(CFLAGS) test.c $(FILES) $(LIB_PATH)ft_putchar_fd.c  $(LIB_PATH)ft_putstr_fd.c $(LIB_PATH)ft_putnbr_fd.c && ./a.out
+	$(CC) $(CFLAGS) test.c $(FILES) $(LIB_PATH)*.c && ./a.out
 
 test02:
-	$(CC) $(CFLAGS) test.c -o test && ./test
+	$(CC) $(CFLAGS) test.c $(NAME) && ./a.out
 
 clean:
 	rm $(OBJ) a.out

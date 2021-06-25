@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/23 22:22:26 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/25 13:58:35 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-static void get_number(t_flags *flag)
+static void	get_number(t_flags *flag)
 {
-	char *str;
-	int start;
+	char	*str;
+	int		start;
 
 	start = flag->pos_str;
 	while (ft_isdigit(flag->str[flag->pos_str]) != 0)
@@ -31,7 +31,7 @@ static void get_number(t_flags *flag)
 	free(str);
 }
 
-int pupulate_flags(va_list list, t_flags *flag)
+static void	set_minus_zero(t_flags *flag)
 {
 	if (flag->str[flag->pos_str] == '-')
 	{
@@ -43,20 +43,26 @@ int pupulate_flags(va_list list, t_flags *flag)
 		flag->zero = 1;
 		flag->pos_str++;
 	}
+}
+
+void	pupulate_flags(va_list list, t_flags *flag)
+{
+	set_minus_zero(flag);
 	while (flag->str[flag->pos_str] != 0)
 	{
 		if (flag->str[flag->pos_str] == '.')
 			flag->dot = 1;
 		else if (flag->str[flag->pos_str] == '*')
+		{
 			if (flag->dot)
 				flag->presition = va_arg(list, int);
 			else
 				flag->width = va_arg(list, int);
+		}
 		else if (ft_isdigit(flag->str[flag->pos_str]))
 			get_number(flag);
 		else
-			break;
+			break ;
 		flag->pos_str++;
 	}
-	return (0);
 }

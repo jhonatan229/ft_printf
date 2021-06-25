@@ -6,14 +6,14 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:30:40 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/23 23:25:07 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/25 13:52:43 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
 
-static void align_str(char *str, t_flags *flag)
+static void	align_str(char *str, t_flags *flag)
 {
 	int	len;
 
@@ -39,6 +39,7 @@ static void align_str(char *str, t_flags *flag)
 void	set_string(va_list list, t_flags *flag)
 {
 	char	*str;
+
 	if (flag->presition > 0)
 		str = ft_substr(va_arg(list, char *), 0, flag->presition);
 	else

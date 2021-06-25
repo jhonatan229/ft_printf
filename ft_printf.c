@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/24 11:13:12 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/25 14:13:20 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-static void set_flags(t_flags *flags, int sinal)
+static void	set_flags(t_flags *flags, int sinal)
 {
 	if (sinal == 0)
 		flags->pos_str = 0;
@@ -25,21 +25,22 @@ static void set_flags(t_flags *flags, int sinal)
 	flags->zero = 0;
 }
 
-static void verify_type(va_list list, t_flags *flag)
+static void	verify_type(va_list list, t_flags *flag)
 {
 	pupulate_flags(list, flag);
 	if (flag->str[flag->pos_str] == 'c')
 		set_char(list, flag);
 	else if (flag->str[flag->pos_str] == 's')
 		set_string(list, flag);
-	else if (flag->str[flag->pos_str] == 'd' || flag->str[flag->pos_str] == 'i')
+	else if (flag->str[flag->pos_str] == 'd' || flag->str[flag->pos_str] == 'i'
+		|| flag->str[flag->pos_str] == 'u')
 		set_integer(list, flag);
 	set_flags(flag, 1);
 }
 
 int	ft_printf(const char *str, ...)
 {
-	va_list list;
+	va_list	list;
 	t_flags	flags;
 
 	set_flags(&flags, 0);

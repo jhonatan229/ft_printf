@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/24 17:45:53 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/25 14:08:29 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "libft/libft.h"
 #include <stdio.h>
 
-static void negative_str(char *str, char *buf, int pres, int count)
+static void	negative_str(char *str, char *buf, int pres, int count)
 {
 	int	len;
-	
+
 	buf[0] = '-';
 	len = (pres - (ft_strlen(str) - 1));
 	while (count < len + 1)
@@ -29,10 +29,10 @@ static void negative_str(char *str, char *buf, int pres, int count)
 	}
 }
 
-static void zero_str(char *str, char *buf, int pres, int count)
+static void	zero_str(char *str, char *buf, int pres, int count)
 {
 	int	len;
-	
+
 	if (count == 1)
 		buf[0] = '-';
 	len = (pres - ft_strlen(str));
@@ -45,7 +45,7 @@ static void zero_str(char *str, char *buf, int pres, int count)
 	}
 }
 
-static char *modify_str_pres(int count, char *str, int pres, t_flags *flag)
+static char	*modify_str_pres(int count, char *str, int pres, t_flags *flag)
 {
 	char	*buf;
 	int		len;
@@ -73,13 +73,17 @@ static char *modify_str_pres(int count, char *str, int pres, t_flags *flag)
 	}	
 	return (buf);
 }
-static char *set_presition(va_list list, t_flags *flag)
+
+static char	*set_presition(va_list list, t_flags *flag)
 {
 	char	*str;
 	int		point;
 
 	point = 0;
-	str = ft_itoa(va_arg(list, int));
+	if (flag->str[flag->pos_str] == 'u')
+		str = ft_itoa(va_arg(list, unsigned int));
+	else
+		str = ft_itoa(va_arg(list, int));
 	if (str[0] == '-')
 	{
 		point = 1;
@@ -104,6 +108,7 @@ void	set_integer(va_list list, t_flags *flag)
 	str = set_presition(list, flag);
 	len = ft_strlen(str);
 	if (flag->sinal)
+	{
 		if (flag->width > ft_strlen(str))
 		{
 			ft_putstr_fd(str, 1);
@@ -111,7 +116,8 @@ void	set_integer(va_list list, t_flags *flag)
 				ft_putchar_fd(' ', 1);
 			return ;
 		}
-	if (flag->width > len && flag->zero == 0)
+	}		
+	if (flag->width > len)
 	{
 		len = flag->width - ft_strlen(str);
 		while (len-- != 0)
