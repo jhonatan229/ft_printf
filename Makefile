@@ -10,7 +10,7 @@ OBJ = ft_printf.o set_flags.o print_char.o print_string.o print_integer.o
 
 CC = clang
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=leak
 
 all: $(NAME)
 

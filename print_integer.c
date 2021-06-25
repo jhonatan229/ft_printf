@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/25 14:08:29 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/25 16:55:15 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,8 @@ static char	*set_presition(va_list list, t_flags *flag)
 	int		point;
 
 	point = 0;
-	if (flag->str[flag->pos_str] == 'u')
-		str = ft_itoa(va_arg(list, unsigned int));
-	else
-		str = ft_itoa(va_arg(list, int));
-	if (str[0] == '-')
+	str = ft_itoa(va_arg(list, int));
+	if (str[0] == '-' && flag->str[flag->pos_str] != 'u')
 	{
 		point = 1;
 		if (flag->presition > (ft_strlen(str) - 1))

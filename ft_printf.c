@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/25 14:13:20 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/25 17:04:02 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ static void	set_flags(t_flags *flags, int sinal)
 
 static void	verify_type(va_list list, t_flags *flag)
 {
+	char	c;
+
 	pupulate_flags(list, flag);
-	if (flag->str[flag->pos_str] == 'c')
+	c = flag->str[flag->pos_str];
+	if (c == 'c')
 		set_char(list, flag);
-	else if (flag->str[flag->pos_str] == 's')
+	else if (c == 's')
 		set_string(list, flag);
-	else if (flag->str[flag->pos_str] == 'd' || flag->str[flag->pos_str] == 'i'
-		|| flag->str[flag->pos_str] == 'u')
+	else if (c == 'd' || c == 'i')
 		set_integer(list, flag);
 	set_flags(flag, 1);
 }
@@ -59,5 +61,6 @@ int	ft_printf(const char *str, ...)
 	}
 	//printf("--------------\n count: %i\n dot: %i\n presition: %i\n sinal: %i\n width: %i\n zero: %i\n", flags.pos_str, flags.dot, flags.presition, flags.sinal, flags.width, flags.zero);
 	va_end(list);
+	free(flags.str);
 	return (flags.pos_str);
 }
