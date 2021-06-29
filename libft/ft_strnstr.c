@@ -18,7 +18,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	phay;
 	size_t	pneed;
-	size_t	mark;
 
 	phay = 0;
 	//verify if my needle is equals to 0, if true, return a pointer to the beegin of my haystack
