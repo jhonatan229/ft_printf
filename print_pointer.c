@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 17:27:43 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 20:01:30 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	set_pointer(va_list list, t_flags *flag)
 {
 	unsigned long int	numb;
 	int	len_num;
-	int diference;
 
 	numb = va_arg(list, unsigned long int);
 	if (numb == 0)
@@ -65,12 +64,15 @@ void	set_pointer(va_list list, t_flags *flag)
 	len_num = count_print_places(numb, BASE_LOWER_HEXA, 0) + 2;
 	if (flag->width > len_num)
 	{
-		diference = flag->width - len_num;
+		flag->return_len += flag->width;
 		if (flag->sinal)
-			print_right_left(diference, numb, 1);
+			print_right_left(flag->width - len_num, numb, 1);
 		else
-			print_right_left(diference, numb, 0);
+			print_right_left(flag->width - len_num, numb, 0);
 	}
 	else
+	{
+		flag->return_len += len_num;
 		print_pointer(numb);
+	}
 }

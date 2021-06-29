@@ -27,7 +27,7 @@ test:
 	$(CC) $(CFLAGS) test.c $(FILES) $(LIB_PATH)*.c && ./a.out
 
 test02:
-	$(CC) $(CFLAGS) test.c $(NAME) && ./a.out
+	$(CC) test.c $(NAME) && ./a.out
 
 clean:
 	make clean -C $(LIB_PATH)
