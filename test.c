@@ -22,7 +22,8 @@ int	main(void)
 	//printf("13: %i\n", printf(" %*s %*s ", 1, "123", 10, "4567"));
 	//printf("14: %i\n", printf(" *%s %*s ", "123", 10, "4567"));
 	//printf("15: %i\n", printf(" %*s %s ", 10, "123", "4567"));
-	//printf("16: %i\n", printf(" %*.s %.1s ", 10, "123", "4567"));
+	printf("16: %i\n", printf(" %*.s %.1s ", 10, "123", "4567"));
+	printf("16: %i\n", ft_printf(" %*.s %.1s ", 10, "123", "4567"));
 	//printf("17: %i\n", printf(" %*.0s %.2s ", 10, "123", "4567"));
 	//printf("18: %i\n", printf(" %*.3s %.3s ", 10, "123", "4567"));
 	//printf("19: %i\n", printf(" %*.4s %.4s ", 10, "123", "4567"));
@@ -44,6 +45,6 @@ int	main(void)
 	printf("34: %i\n", ft_printf(" %-3.s ", NULL));
 	printf("35: %i\n", printf(" %-9.1s ", NULL));
 	printf("35: %i\n", ft_printf(" %-9.1s ", NULL));
-	printf("36: %i\n", printf(" %.*s ", -2, NULL));
-	printf("36: %i\n", ft_printf(" %.*s ", -2, NULL));
+	printf("36: %i\n", printf(" %.*s ", 0, NULL));
+	printf("36: %i\n", ft_printf(" %.*s ", 0, NULL));
 }
