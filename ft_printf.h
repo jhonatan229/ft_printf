@@ -26,5 +26,6 @@ void	set_char(va_list list, t_flags *flag);
 void	set_string(va_list list, t_flags *flag);
 void	set_integer(va_list list, t_flags *flag);
 void	set_unsigned(va_list list, t_flags *flag);
+void	set_pointer(va_list list, t_flags *flag);
 
 #endif

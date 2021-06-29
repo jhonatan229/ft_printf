@@ -6,13 +6,12 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/28 19:21:20 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 14:46:35 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-#include <stdio.h>
 
 static void	negative_str(char *str, char *buf, int pres, int count)
 {
@@ -70,7 +69,8 @@ static char	*modify_str_pres(int count, char *str, int pres, t_flags *flag)
 			buf[count++] = *str;
 			str++;
 		}
-	}	
+	}
+	free(str);
 	return (buf);
 }
 
@@ -111,6 +111,7 @@ void	set_integer(va_list list, t_flags *flag)
 			ft_putstr_fd(str, 1);
 			while (len++ < flag->width)
 				ft_putchar_fd(' ', 1);
+			free(str);
 			return ;
 		}
 	}		

@@ -284,8 +284,32 @@ int	main(void)
 	printf("\n");
 	printf("%-60s: |%-*.*X|", "(hex_neg) minimum (20) and precision (6) field left align", 20, 6, hex);
 	printf("\n");
+	printf("---------------------------------------------pointer----------------------------------------------------\n");
 	printf("\n");
+	
+	int *pointer;
+	int num;
+	
+	num = 42;
+	pointer = &num;
+	ft_printf("%-60s: |%p|","format identifier", pointer);
+	ft_printf("\n");
+	ft_printf("%-60s: |%20p|", "with minimum field (20) width", pointer);
+	ft_printf("\n");
+	ft_printf("%-60s: |%020p|", "minimum field (20) left align", pointer);
+	ft_printf("\n");
+	ft_printf("%-60s: |%p|","format identifier", NULL);
+	ft_printf("\n");
+	ft_printf("---------------------------------------------original pointer----------------------------------------------------\n");
+	ft_printf("\n");
+	
+	printf("%-60s: |%p|","format identifier", pointer);
 	printf("\n");
+	printf("%-60s: |%20p|", "with minimum field (20) width", pointer);
+	printf("\n");
+	printf("%-60s: |%-20p|", "minimum field (20) left align", pointer);
+	printf("\n");
+	printf("%-60s: |%p|","format identifier", NULL);
 	printf("\n");
 	return (0);
 }
