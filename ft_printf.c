@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 18:41:39 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 18:55:20 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ static void	verify_type(va_list list, t_flags *flag)
 	char	c;
 
 	pupulate_flags(list, flag);
-	if (flag->width > 0)
-		flag->return_len += flag->width;
-	else
-		flag->return_len++;
 	c = flag->str[flag->pos_str];
 	if (c == 'c')
 		set_char(list, flag);
