@@ -18,6 +18,7 @@ typedef struct s_ft_printf
 	int		sinal;
 	int		dot;
 	int		zero;
+	int		return_len;
 }				t_flags;
 
 int		ft_printf(const char *str, ...);

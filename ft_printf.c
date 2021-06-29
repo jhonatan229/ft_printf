@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 17:27:41 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 18:24:36 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 static void	set_flags(t_flags *flags, int sinal)
 {
 	if (sinal == 0)
+	{
 		flags->pos_str = 0;
+		flags->return_len = 0;
+	}	
 	flags->dot = 0;
 	flags->presition = 0;
 	flags->sinal = 0;
@@ -29,6 +32,10 @@ static void	verify_type(va_list list, t_flags *flag)
 	char	c;
 
 	pupulate_flags(list, flag);
+	if (flag->width > 0)
+		flag->return_len += flag->width;
+	else
+		flag->return_len++;
 	c = flag->str[flag->pos_str];
 	if (c == 'c')
 		set_char(list, flag);
@@ -62,9 +69,10 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 			ft_putchar_fd(flags.str[flags.pos_str], 1);
+		flags.return_len++;
 		flags.pos_str++;
 	}
 	va_end(list);
 	free(flags.str);
-	return (flags.pos_str);
+	return (flags.return_len - 1);
 }
