@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:30:40 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 18:55:09 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 19:26:09 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,25 @@ void	set_string(va_list list, t_flags *flag)
 {
 	char	*str;
 
-	if (flag->presition > 0)
-		str = ft_substr(va_arg(list, char *), 0, flag->presition);
+	str = va_arg(list, char *);
+	if (str == NULL && !flag->dot)
+		str = ft_strdup("(null)");
+	else if (str == NULL && flag->presition < 0)
+		str = ft_strdup("(null)");
+	else if (str == NULL)
+		str = ft_strdup("");
+	else if (flag->presition > 0)
+		str = ft_substr(str, 0, flag->presition);
 	else
-		str = ft_strdup(va_arg(list, char *));
-	if (str == NULL)
-	{
-		ft_putstr_fd("(null)", 1);
-		return ;
-	}
+		str = ft_strdup(str);
 	if (flag->width > ft_strlen(str))
 	{
-		flag->return_len = flag->width;
+		flag->return_len += flag->width;
 		align_str(str, flag);
 	}
 	else
 	{
-		flag->return_len = ft_strlen(str);
+		flag->return_len += ft_strlen(str);
 		ft_putstr_fd(str, 1);
 	}
 	free(str);

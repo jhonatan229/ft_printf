@@ -30,9 +30,8 @@ test02:
 	$(CC) $(CFLAGS) test.c $(NAME) && ./a.out
 
 clean:
-	make clean -C $(LIB_PATH) $(LIB)
-	rm $(OBJ) a.out
+	make clean -C $(LIB_PATH)
+	rm $(OBJ)
 
 fclean: clean
-	make fclean -C $(LIB_PATH) $(LIB)
 	rm $(NAME)
