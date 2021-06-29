@@ -71,11 +71,10 @@ int	main(void)
 	printf("10: %i\n", ft_printf(" %10p %-10p ", 1, -1));
 	printf("11: %i\n", printf(" %p %p ", 1, -1));
 	printf("11: %i\n", ft_printf(" %p %p ", 1, -1));
-	printf("12: %i\n", printf(" %10p %-10p ", 0, 0));
-	printf("12: %i\n", ft_printf(" %10p %-10p ", 0, 0));
+	printf("12: %i\n", printf(" %10.p %-10p ", 0, 0));
+	printf("12: %i\n", ft_printf(" %10.p %-10p ", 0, 0));
 	printf("16: %i\n", printf(" %*p %-*p ", -10, 101, -10, 42));
 	printf("16: %i\n", ft_printf(" %*p %-*p ", -10, 101, -10, 42));
 	printf("17: %i\n", printf(" .-0*%*p %-*p*0-. ", 11, 101, 11, 42));
 	printf("17: %i\n", ft_printf(" .-0*%*p %-*p*0-. ", 11, 101, 11, 42));
-}
 }

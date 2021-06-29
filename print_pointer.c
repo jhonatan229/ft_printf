@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 20:43:28 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 20:52:34 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int	count_print_places(unsigned long int num, char *base, int sinal)
 	int	len_base;
 
 	len_base = ft_strlen(base);
-	if (num == 0)
-		return (0);
 	count = 1;
 	if (num / len_base > 0)
 		count += count_print_places(num / len_base, base, sinal);
