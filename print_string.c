@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:30:40 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/25 13:52:43 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:48:42 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ void	set_string(va_list list, t_flags *flag)
 		str = ft_substr(va_arg(list, char *), 0, flag->presition);
 	else
 		str = va_arg(list, char *);
+	if (str == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		return ;
+	}
 	if (flag->width > ft_strlen(str))
 		align_str(str, flag);
 	else
