@@ -5,6 +5,10 @@
 # include <unistd.h>
 # include <stdarg.h>
 
+# define BASE_DESC "0123456789"
+# define BASE_LOWER_HEXA "0123456789abcdef"
+# define BASE_UPPER_HEXA "0123456789ABCDEF"
+
 typedef struct s_ft_printf
 {
 	char	*str;
@@ -21,5 +25,6 @@ void	pupulate_flags(va_list list, t_flags *flag);
 void	set_char(va_list list, t_flags *flag);
 void	set_string(va_list list, t_flags *flag);
 void	set_integer(va_list list, t_flags *flag);
+void	set_unsigned(va_list list, t_flags *flag);
 
 #endif

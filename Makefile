@@ -4,9 +4,9 @@ LIB = libft.a
 
 LIB_PATH = ./libft/
 
-FILES = ft_printf.c set_flags.c print_char.c print_string.c print_integer.c
+FILES = ft_printf.c set_flags.c print_char.c print_string.c print_integer.c print_unsigned.c
 
-OBJ = ft_printf.o set_flags.o print_char.o print_string.o print_integer.o
+OBJ = ft_printf.o set_flags.o print_char.o print_string.o print_integer.o print_unsigned.o
 
 CC = clang
 
