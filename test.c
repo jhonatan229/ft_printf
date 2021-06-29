@@ -78,10 +78,8 @@ int	main(void)
 	printf("\nmy return: %i\n", ft_printf(" %c ", '0'));
 	//printf("\nreturn: %i\n", ft_printf("10%c", '0'));
 	//printf("\nreturn: %i\n", ft_printf("%10c", '0'));
-	printf("\noriginal return: %i\n", printf("-10%c", '0'));
-	printf("\nmy return: %i\n", ft_printf("-10%c", '0'));
-	printf("\nreturn: %i\n", printf("|%-10c|", '0'));
-	printf("\nreturn: %i\n", ft_printf("|%-10c|", '0'));
+	printf("\noriginal return: %i\n", printf("|%*c%*c|", -10, '0', 10, '1'));
+	printf("\nmy return: %i\n", ft_printf("|%*c%*c|", -10, '0', 10, '1'));
 	//printf("\nreturn: %i\n", ft_printf("%-10c", '0'));
 	//printf("\nreturn: %i\n", ft_printf("%*c", 1, '0'));
 	//printf("\nreturn: %i\n", ft_printf("%*c", 0, '0'));
