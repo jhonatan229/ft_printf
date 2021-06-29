@@ -6,13 +6,12 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/28 22:06:57 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:27:13 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-#include <stdio.h>
 
 static int	count_places(unsigned int num, char *base)
 {

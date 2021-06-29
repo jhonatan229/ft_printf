@@ -1,4 +1,4 @@
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 LIB = libft.a
 
@@ -30,7 +30,9 @@ test02:
 	$(CC) $(CFLAGS) test.c $(NAME) && ./a.out
 
 clean:
+	make clean -C $(LIB_PATH) $(LIB)
 	rm $(OBJ) a.out
 
 fclean: clean
+	make fclean -C $(LIB_PATH) $(LIB)
 	rm $(NAME)

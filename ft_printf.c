@@ -6,13 +6,12 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 14:47:35 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:27:41 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-#include <stdio.h>
 
 static void	set_flags(t_flags *flags, int sinal)
 {
@@ -65,7 +64,6 @@ int	ft_printf(const char *str, ...)
 			ft_putchar_fd(flags.str[flags.pos_str], 1);
 		flags.pos_str++;
 	}
-	//printf("--------------\n count: %i\n dot: %i\n presition: %i\n sinal: %i\n width: %i\n zero: %i\n", flags.pos_str, flags.dot, flags.presition, flags.sinal, flags.width, flags.zero);
 	va_end(list);
 	free(flags.str);
 	return (flags.pos_str);

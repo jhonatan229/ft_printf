@@ -6,13 +6,12 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/25 13:58:35 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:27:03 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
-#include <stdio.h>
 
 static void	get_number(t_flags *flag)
 {
@@ -58,6 +57,11 @@ void	pupulate_flags(va_list list, t_flags *flag)
 				flag->presition = va_arg(list, int);
 			else
 				flag->width = va_arg(list, int);
+			if (flag->width < 0)
+			{
+				flag->sinal = 1;
+				flag->width *= -1;
+			}
 		}
 		else if (ft_isdigit(flag->str[flag->pos_str]))
 			get_number(flag);
