@@ -82,7 +82,7 @@ int	main(void)
 	printf("1: %i\n", printf(" %u ", 0));
 	printf("1: %i\n", ft_printf(" %u ", 0));
 	printf("2: %i\n", printf(" %.u ", 0));
-	printf("2: %i\n", ft_printf(" %.u ", 1542));
+	printf("2: %i\n", ft_printf(" %.u ", 0));
 	printf("3: %i\n", printf(" %-.2u ", 0));
 	printf("3: %i\n", ft_printf(" %-.2u ", 0));
 	printf("4: %i\n", printf(" %-2.0u ", 10));
@@ -110,4 +110,8 @@ int	main(void)
 	printf("16: %i\n", ft_printf(" --0*%0*.0u*0 0*%0*.10u*0-- ", -2, 0, 21, 1));
 	printf("17: %i\n", printf("%0-2.0u*0", 0));
 	printf("17: %i\n", ft_printf("%0-2.0u*0", 0));
+	printf("70: %i\n", printf("%.0u", 5));
+	printf("70: %i\n", ft_printf("%.0u", 5));
+	printf("71: %i\n", printf("%.0u", 10));
+	printf("71: %i\n", ft_printf("%.0u", 10));
 }
