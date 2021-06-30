@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/30 11:23:01 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/30 12:06:38 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ void	set_unsigned(va_list list, t_flags *flag)
 		len = count_places(numb, BASE_LOWER_HEXA);
 	else if (flag->str[flag->pos_str] == 'X')
 		len = count_places(numb, BASE_UPPER_HEXA);
-	if (flag->zero)
+	if (flag->zero && !flag->dot)
 		print_aling_rigth('0', len, numb, flag);
-	else if (flag->dot && flag->presition <= 0)
+	else if (flag->dot && flag->presition <= 0 && flag->width <= 0)
 		return ;
 	else if (flag->sinal)
 		print_aling_left(' ', len, numb, flag);
