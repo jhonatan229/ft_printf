@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 14:46:35 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:31:23 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ static char	*modify_str_pres(int count, char *str, int pres, t_flags *flag)
 		}
 	}
 	free(str);
+	if (flag->width > ft_strlen(buf))
+		flag->return_len = flag->width;
+	else
+		flag->return_len = ft_strlen(buf);
 	return (buf);
 }
 

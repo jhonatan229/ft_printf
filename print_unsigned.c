@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 17:27:13 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:23:01 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,13 @@ static void	print_aling_rigth(char c, int len_numb, int numb, t_flags *flag)
 		len_numb = flag->presition;
 	if (flag->width > len_numb)
 	{
+		flag->return_len += flag->width;
 		len = flag->width - len_numb;
 		while (len-- > 0)
 			ft_putchar_fd(c, 1);
 	}
+	else
+		flag->return_len += len_numb;
 	while (press-- > 0)
 		ft_putchar_fd('0', 1);
 	if (flag->str[flag->pos_str] == 'u')
@@ -72,19 +75,22 @@ static void	print_aling_left(char c, int len_numb, int numb, t_flags *flag)
 	while (press-- > 0)
 		ft_putchar_fd('0', 1);
 	if (flag->str[flag->pos_str] == 'u')
-		len = print_places(numb, BASE_DESC, len_numb);
+		print_places(numb, BASE_DESC, len_numb);
 	else if (flag->str[flag->pos_str] == 'x')
-		len = print_places(numb, BASE_LOWER_HEXA, len_numb);
+		print_places(numb, BASE_LOWER_HEXA, len_numb);
 	else if (flag->str[flag->pos_str] == 'X')
-		len = print_places(numb, BASE_UPPER_HEXA, len_numb);
+		print_places(numb, BASE_UPPER_HEXA, len_numb);
 	if (flag->presition > len_numb)
 		len_numb = flag->presition;
 	if (flag->width > len_numb)
 	{
+		flag->return_len += flag->width;
 		len = flag->width - len_numb;
 		while (len-- > 0)
 			ft_putchar_fd(c, 1);
 	}
+	else
+		flag->return_len += len_numb;
 }
 
 void	set_unsigned(va_list list, t_flags *flag)
@@ -101,6 +107,8 @@ void	set_unsigned(va_list list, t_flags *flag)
 		len = count_places(numb, BASE_UPPER_HEXA);
 	if (flag->zero)
 		print_aling_rigth('0', len, numb, flag);
+	else if (flag->dot && flag->presition <= 0)
+		return ;
 	else if (flag->sinal)
 		print_aling_left(' ', len, numb, flag);
 	else
