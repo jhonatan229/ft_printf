@@ -46,8 +46,8 @@ int	main(void)
 	//printf("34: %i\n", ft_printf(" %-3.s ", NULL));
 	printf("35: %i\n", printf(" |%-9.3s| ", NULL));
 	printf("35: %i\n", ft_printf(" |%-9.3s| ", NULL));
-	//printf("36: %i\n", printf(" %.*s ", 0, NULL));
-	//printf("36: %i\n", ft_printf(" %.*s ", 0, NULL));
+	printf("36: %i\n", printf(" %.*s ", 0, NULL));
+	printf("36: %i\n", ft_printf(" %.*s ", 0, NULL));
 
 
 	//printf("1: %i\n", printf(" %p ", -1));

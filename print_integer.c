@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/01 16:17:21 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/01 20:08:49 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,6 @@ static void	print_num(int num, int sinal, int len, t_flags *flag)
 	if (sinal == 1 || num == -2147483648)
 	{
 		wid--;
-		if (flag->width > flag->presition)
-			flag->return_len--;
 		if (num != -2147483648)
 			print_negative(num, len, wid, flag);
 		else 
