@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/30 21:50:02 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/01 14:10:18 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static void print_negative(int num, int len, int wid, t_flags *flag)
 	int press;
 
 	press = flag->presition - len;
-	wid -= press;
+	if (press > 0)
+		wid -= press;
 	if (flag->sinal)
 	{
 		ft_putchar_fd('-', 1);
@@ -45,7 +46,7 @@ static void print_negative(int num, int len, int wid, t_flags *flag)
 			ft_putchar_fd(' ', 1);
 		return ;
 	}
-	else if (flag->zero)
+	else if (flag->zero && !flag->dot)
 	{
 		ft_putchar_fd('-', 1);
 		while (wid-- > 0)
@@ -68,7 +69,8 @@ static void print_positive(int num, int len, int wid, t_flags *flag)
 	int	press;
 
 	press = flag->presition - len;
-	wid -= press;
+	if (press > 0)
+		wid -= press;
 	if (flag->sinal)
 	{
 		if (press > 0)
@@ -79,7 +81,7 @@ static void print_positive(int num, int len, int wid, t_flags *flag)
 			ft_putchar_fd(' ', 1);
 		return ;
 	}
-	if (flag->zero)
+	if (flag->zero && !flag->dot)
 		while (wid-- > 0)
 			ft_putchar_fd('0', 1);
 	else
@@ -109,7 +111,12 @@ static void	print_num(int num, int sinal, int len, t_flags *flag)
 	else
 		flag->return_len += len;
 	if (sinal == 1)
+	{
+		wid--;
+		if (flag->width > flag->presition)
+			flag->return_len--;
 		print_negative(num, len, wid, flag);
+	}
 	else
 		print_positive(num, len, wid, flag);
 }
@@ -123,6 +130,7 @@ void	set_integer(va_list list, t_flags *flag)
 	num = va_arg(list, int);
 	if (num < 0)
 	{
+		flag->return_len++;
 		num *= -1;
 		sinal = 1;
 	}
