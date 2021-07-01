@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:30:40 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/01 15:42:07 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/01 15:48:58 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	set_string(va_list list, t_flags *flag)
 	str = va_arg(list, char *);
 	if (str == NULL)
 		str = ft_strdup("");
-	else if (flag->dot)
+	if (flag->dot)
 		str = ft_substr(str, 0, flag->presition);
 	else
 		str = ft_strdup(str);

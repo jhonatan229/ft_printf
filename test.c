@@ -2,6 +2,7 @@
 #include "libft/libft.h"
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 int	main(void)
 {
@@ -43,8 +44,8 @@ int	main(void)
 	//printf("33: %i\n", printf(" %4.2s %-4.2s ", "123", "4567"));
 	//printf("34: %i\n", printf(" %-3.s ", NULL));
 	//printf("34: %i\n", ft_printf(" %-3.s ", NULL));
-	printf("35: %i\n", printf(" |%-9.1s| ", NULL));
-	printf("35: %i\n", ft_printf(" |%-9.1s| ", NULL));
+	printf("35: %i\n", printf(" |%-9.3s| ", NULL));
+	printf("35: %i\n", ft_printf(" |%-9.3s| ", NULL));
 	//printf("36: %i\n", printf(" %.*s ", 0, NULL));
 	//printf("36: %i\n", ft_printf(" %.*s ", 0, NULL));
 
@@ -129,40 +130,42 @@ int	main(void)
 	//printf("6: %i\n", printf("%%"));
 	//printf("7: %i\n", printf("%% %%"));
 
-	//printf("1: %i\n", printf(" %d ", 0));
-	//printf("1: %i\n", ft_printf(" %d ", 0));
-	//printf("2: %i\n", printf(" %.d ", 0));
-	//printf("2: %i\n", ft_printf(" %.d ", 0));
-	//printf("3: %i\n", printf(" %-.2d ", 0));
-	//printf("3: %i\n", ft_printf(" %-.2d ", 0));
-	//printf("4: %i\n", printf(" %-2.2d ", 0));
-	//printf("4: %i\n", ft_printf(" %-2.2d ", 0));
-	//printf("5: %i\n", printf(" %-3.2d ", 1));
-	//printf("5: %i\n", ft_printf(" %-3.2d ", 1));
-	//printf("6: %i\n", printf(" %-3.2d %10.42d ", 0, 0));
-	//printf("6: %i\n", ft_printf(" %-3.2d %10.42d ", 0, 0));
-	//printf("7: %i\n", printf(" %-3.2d %10.42d ", 1, -1));
-	//printf("7: %i\n", ft_printf(" %-3.2d %10.42d ", 1, -1));
-	//printf("8: %i\n", printf(" %-3.2d %10.42d ", 10, -10));
-	//printf("8: %i\n", ft_printf(" %-3.2d %10.42d ", 10, -10));
-	//printf("9: %i\n", printf(" *%-*.*d* *%*.*d* ", 4, 5, 10, 10, 21, -10));
-	//printf("9: %i\n", ft_printf(" *%-*.*d* *%*.*d* ", 4, 5, 10, 10, 21, -10));
-	//printf("10: %i\n", printf(" *%-*.*d* *%*.*d* ", 6, 3, 10256, 10, 21, -101));
-	//printf("10: %i\n", ft_printf(" *%-*.*d* *%*.*d* ", 6, 3, 10256, 10, 21, -101));
-	//printf("11: %i\n", printf(" *%*.*d* *%*.*d* ", -6, 2, 102, 10, 21, 101));
-	//printf("11: %i\n", ft_printf(" *%*.*d* *%*.*d* ", -6, 2, 102, 10, 21, 101));
-	//printf("12: %i\n", printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 6, 2, 102, 10, 21, -101));
-	//printf("12: %i\n", ft_printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 6, 2, 102, 10, 21, -101));
-	//printf("13: %i\n", printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 2, 6, 102, 21, 10, -101));
-	//printf("13: %i\n", ft_printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 2, 6, 102, 21, 10, -101));
-	//printf("14: %i\n", printf(" 0*%0-*d*0 0*%0*d*0 ", 21, 1021, 21, -1011));
-	//printf("14: %i\n", ft_printf(" 0*%0-*d*0 0*%0*d*0 ", 21, 1021, 21, -1011));
-	//printf("15: %i\n", printf(" 0*%-0*.10d*0 0*%-0*.0d*0 ", 21, 1021, 21, -1011));
-	//printf("15: %i\n", ft_printf(" 0*%-0*.10d*0 0*%-0*.0d*0 ", 21, 1021, 21, -1011));
-	//printf("16: %i\n", printf(" --0*%0*.0d*0 0*%0*.10d*0-- ", -2, 0, 21, 1));
-	//printf("16: %i\n", ft_printf(" --0*%0*.0d*0 0*%0*.10d*0-- ", -2, 0, 21, 1));
+	printf("1: %i\n", printf(" %d ", 0));
+	printf("1: %i\n", ft_printf(" %d ", 0));
+	printf("2: %i\n", printf(" %.d ", 0));
+	printf("2: %i\n", ft_printf(" %.d ", 0));
+	printf("3: %i\n", printf(" %-.2d ", 0));
+	printf("3: %i\n", ft_printf(" %-.2d ", 0));
+	printf("4: %i\n", printf(" %-2.2d ", 0));
+	printf("4: %i\n", ft_printf(" %-2.2d ", 0));
+	printf("5: %i\n", printf(" %-3.2d ", 1));
+	printf("5: %i\n", ft_printf(" %-3.2d ", 1));
+	printf("6: %i\n", printf(" %-3.2d %10.42d ", 0, 0));
+	printf("6: %i\n", ft_printf(" %-3.2d %10.42d ", 0, 0));
+	printf("7: %i\n", printf(" %-3.2d %10.42d ", 1, -1));
+	printf("7: %i\n", ft_printf(" %-3.2d %10.42d ", 1, -1));
+	printf("8: %i\n", printf(" %-3.2d %10.42d ", 10, -10));
+	printf("8: %i\n", ft_printf(" %-3.2d %10.42d ", 10, -10));
+	printf("9: %i\n", printf(" *%-*.*d* *%*.*d* ", 4, 5, 10, 10, 21, -10));
+	printf("9: %i\n", ft_printf(" *%-*.*d* *%*.*d* ", 4, 5, 10, 10, 21, -10));
+	printf("10: %i\n", printf(" *%-*.*d* *%*.*d* ", 6, 3, 10256, 10, 21, -101));
+	printf("10: %i\n", ft_printf(" *%-*.*d* *%*.*d* ", 6, 3, 10256, 10, 21, -101));
+	printf("11: %i\n", printf(" *%*.*d* *%*.*d* ", -6, 2, 102, 10, 21, 101));
+	printf("11: %i\n", ft_printf(" *%*.*d* *%*.*d* ", -6, 2, 102, 10, 21, 101));
+	printf("12: %i\n", printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 6, 2, 102, 10, 21, -101));
+	printf("12: %i\n", ft_printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 6, 2, 102, 10, 21, -101));
+	printf("13: %i\n", printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 2, 6, 102, 21, 10, -101));
+	printf("13: %i\n", ft_printf(" 0*%0-*.*d*0 0*%0*.*d*0 ", 2, 6, 102, 21, 10, -101));
+	printf("14: %i\n", printf(" 0*%0-*d*0 0*%0*d*0 ", 21, 1021, 21, -1011));
+	printf("14: %i\n", ft_printf(" 0*%0-*d*0 0*%0*d*0 ", 21, 1021, 21, -1011));
+	printf("15: %i\n", printf(" 0*%-0*.10d*0 0*%-0*.0d*0 ", 21, 1021, 21, -1011));
+	printf("15: %i\n", ft_printf(" 0*%-0*.10d*0 0*%-0*.0d*0 ", 21, 1021, 21, -1011));
+	printf("16: %i\n", printf(" --0*%0*.0d*0 0*%0*.10d*0-- ", -2, 0, 21, 1));
+	printf("16: %i\n", ft_printf(" --0*%0*.0d*0 0*%0*.10d*0-- ", -2, 0, 21, 1));
 	printf("17: %i\n", printf(" --0*%0*.0i*0 0*%0*.10i*0-- ", -21, 2147483647, 21, -2147483648));
 	printf("17: %i\n", ft_printf(" --0*%0*.0i*0 0*%0*.10i*0-- ", -21, 2147483647, 21, -2147483648));
+	printf("17: %i\n", printf(" --0*%0*.0i*0 0*%0*.10i*0-- ", -21, LONG_MAX, 21, LONG_MIN));
+	printf("17: %i\n", ft_printf(" --0*%0*.0i*0 0*%0*.10i*0-- ", -21, LONG_MAX, 21, LONG_MIN));
 	//printf("69: %i\n", printf("%.0d", 0));
 	//printf("69: %i\n", ft_printf("%.0d", 0));
 	//printf("70: %i\n", printf("%.0d", 5));
