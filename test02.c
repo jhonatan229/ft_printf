@@ -30,9 +30,8 @@ int	main(void)
 
 	printf("1: %i\n", printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d));
 	printf("1: %i\n", ft_printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d));
-	printf("1: %i\n", printf("%1i", j));
-	printf("1: %i\n", ft_printf("%1i", j));
- //j, k, l, m, c, e, d
+	printf("2: %i\n", printf("%5%"));
+	printf("2: %i\n", ft_printf("%5%"));
 	free(n);
 	free(o);
 	free(p);
