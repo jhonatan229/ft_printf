@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/01 14:23:25 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/01 15:15:35 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ static int	count_print_int(int num, char *base, int sinal, int len_print)
 
 	count = 1;
 	len_base = ft_strlen(base);
+	if (num < 0 )
+	{
+		if (num == -2147483648)
+		{
+			if (sinal == 1)
+				ft_putnbr_fd(-2147483648, 1);
+			return(10);
+		}
+		num *= -1;
+	}
 	if (num / len_base > 0)
 		count += count_print_int(num / len_base, base, sinal, len_print);
 	if (count <= len_print && sinal == 1)
@@ -108,12 +118,15 @@ static void	print_num(int num, int sinal, int len, t_flags *flag)
 	}
 	else
 		flag->return_len += len;
-	if (sinal == 1)
+	if (sinal == 1 || num == -2147483648)
 	{
 		wid--;
 		if (flag->width > flag->presition)
 			flag->return_len--;
-		print_negative(num, len, wid, flag);
+		if (num != -2147483648)
+			print_negative(num, len, wid, flag);
+		else 
+			print_positive(num, len, wid, flag);
 	}
 	else
 		print_positive(num, len, wid, flag);
@@ -129,8 +142,8 @@ void	set_integer(va_list list, t_flags *flag)
 	if (num < 0)
 	{
 		flag->return_len++;
-		num *= -1;
-		sinal = 1;
+		if (num != -2147483648)
+			sinal = 1;
 	}
 	if (flag->presition <= 0 && flag->dot && num == 0)
 		len = 0;
