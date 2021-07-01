@@ -6,127 +6,129 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/30 11:31:23 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/06/30 21:50:02 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
-static void	negative_str(char *str, char *buf, int pres, int count)
+static int	count_print_int(int num, char *base, int sinal, int len_print)
 {
-	int	len;
+	int	len_base;
+	int	count;
 
-	buf[0] = '-';
-	len = (pres - (ft_strlen(str) - 1));
-	while (count < len + 1)
-		buf[count++] = '0';
-	while (count < pres + 1)
-	{
-		str++;
-		buf[count++] = *str;
-	}
+	count = 1;
+	len_base = ft_strlen(base);
+	if (num / len_base > 0)
+		count += count_print_int(num / len_base, base, sinal, len_print);
+	if (count <= len_print && sinal == 1)
+		ft_putchar_fd(base[num % len_base] , 1);
+	return (count);
 }
 
-static void	zero_str(char *str, char *buf, int pres, int count)
+static void print_negative(int num, int len, int wid, t_flags *flag)
 {
-	int	len;
+	int press;
 
-	if (count == 1)
-		buf[0] = '-';
-	len = (pres - ft_strlen(str));
-	while (count < len + 1)
-		buf[count++] = '0';
-	while (count < pres)
+	press = flag->presition - len;
+	wid -= press;
+	if (flag->sinal)
 	{
-		str++;
-		buf[count++] = *str;
+		ft_putchar_fd('-', 1);
+		if (press > 0)
+			while (press-- > 0 )
+				ft_putchar_fd('0', 1);
+		count_print_int(num, BASE_DESC, 1, len);
+		while (wid-- > 0)
+			ft_putchar_fd(' ', 1);
+		return ;
 	}
+	else if (flag->zero)
+	{
+		ft_putchar_fd('-', 1);
+		while (wid-- > 0)
+			ft_putchar_fd('0', 1);
+	}
+	else
+	{
+		while (wid-- > 0)
+			ft_putchar_fd(' ', 1);
+		ft_putchar_fd('-', 1);
+	}
+	if (press > 0)
+		while (press-- > 0 )
+			ft_putchar_fd('0', 1);
+	count_print_int(num, BASE_DESC, 1, len);
 }
 
-static char	*modify_str_pres(int count, char *str, int pres, t_flags *flag)
+static void print_positive(int num, int len, int wid, t_flags *flag)
 {
-	char	*buf;
-	int		len;
+	int	press;
 
-	buf = ft_calloc(pres + 1, sizeof(int));
-	if (buf == NULL)
-		return (NULL);
-	if (count == 1)
+	press = flag->presition - len;
+	wid -= press;
+	if (flag->sinal)
 	{
-		if (flag->zero && !flag->dot)
-			zero_str(str, buf, pres, count);
+		if (press > 0)
+			while (press-- > 0 )
+				ft_putchar_fd('0', 1);
+		count_print_int(num, BASE_DESC, 1, len);
+		while (wid-- > 0)
+			ft_putchar_fd(' ', 1);
+		return ;
+	}
+	if (flag->zero)
+		while (wid-- > 0)
+			ft_putchar_fd('0', 1);
+	else
+		while (wid-- > 0)
+			ft_putchar_fd(' ', 1);
+	if (press > 0)
+		while (press-- > 0 )
+			ft_putchar_fd('0', 1);
+	count_print_int(num, BASE_DESC, 1, len);
+}
+
+static void	print_num(int num, int sinal, int len, t_flags *flag)
+{
+	int	wid;
+
+	wid = 0;
+	if (flag->presition < len && flag->presition > 0)
+		len = flag->presition;
+	if (flag->width > 0 && flag->width > len || flag->presition > 0)
+	{
+		if (flag->presition > flag->width)
+			flag->return_len += flag->presition;
 		else
-			negative_str(str, buf, pres, count);
+			flag->return_len += flag->width;
+		wid = flag->width - len;
 	}
 	else
-	{
-		len = (pres - ft_strlen(str));
-		while (count < len)
-			buf[count++] = '0';
-		while (count < pres)
-		{
-			buf[count++] = *str;
-			str++;
-		}
-	}
-	free(str);
-	if (flag->width > ft_strlen(buf))
-		flag->return_len = flag->width;
+		flag->return_len += len;
+	if (sinal == 1)
+		print_negative(num, len, wid, flag);
 	else
-		flag->return_len = ft_strlen(buf);
-	return (buf);
-}
-
-static char	*set_presition(va_list list, t_flags *flag)
-{
-	char	*str;
-	int		point;
-
-	point = 0;
-	str = ft_itoa(va_arg(list, int));
-	if (str[0] == '-')
-	{
-		point = 1;
-		if (flag->presition > (ft_strlen(str) - 1))
-			return (modify_str_pres(point, str++, flag->presition, flag));
-		else if (flag->zero == 1 && flag->dot == 0)
-			return (modify_str_pres(point, str++, flag->width, flag));
-		return (str);
-	}
-	else if (flag->presition > ft_strlen(str))
-		return (modify_str_pres(point, str, flag->presition, flag));
-	else if (flag->zero && flag->dot == 0)
-		return (modify_str_pres(point, str, flag->width, flag));
-	return (str);
+		print_positive(num, len, wid, flag);
 }
 
 void	set_integer(va_list list, t_flags *flag)
 {
-	char	*str;
-	int		len;
+	int	len;
+	int	num;
+	int	sinal;
 
-	str = set_presition(list, flag);
-	len = ft_strlen(str);
-	if (flag->sinal)
+	num = va_arg(list, int);
+	if (num < 0)
 	{
-		if (flag->width > ft_strlen(str))
-		{
-			ft_putstr_fd(str, 1);
-			while (len++ < flag->width)
-				ft_putchar_fd(' ', 1);
-			free(str);
-			return ;
-		}
-	}		
-	if (flag->width > len)
-	{
-		len = flag->width - ft_strlen(str);
-		while (len-- != 0)
-			ft_putchar_fd(' ', 1);
-		ft_putstr_fd(str, 1);
+		num *= -1;
+		sinal = 1;
 	}
-	else
-		ft_putstr_fd(str, 1);
-	free(str);
+	if (flag->presition <= 0 && flag->dot && num == 0)
+		len = 0;
+	else 
+		len = count_print_int(num, BASE_DESC, 0, 0);
+	print_num(num, sinal, len, flag);
 }
