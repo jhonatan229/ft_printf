@@ -32,6 +32,12 @@ int	main(void)
 	printf("1: %i\n", ft_printf("%1i, %1d, %1d, %1d, %1d, %1d, %1d, %1d", i, j, k, l, m, c, e, d));
 	printf("2: %i\n", printf("%5%"));
 	printf("2: %i\n", ft_printf("%5%"));
+	printf("3: %i\n", printf("%-5%"));
+	printf("3: %i\n", ft_printf("%-5%"));
+	printf("4: %i\n", printf("%05%"));
+	printf("4: %i\n", ft_printf("%05%"));
+	printf("5: %i\n", printf("%-05%"));
+	printf("5: %i\n", ft_printf("%-05%"));
 	free(n);
 	free(o);
 	free(p);
