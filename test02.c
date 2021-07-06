@@ -54,12 +54,14 @@ int	main(void)
 	printf(" 11: %i\n", ft_printf("%0-3.3i", 6983));
 	printf(" 12: %i\n", printf("%0-3.3i", -8462));
 	printf(" 12: %i\n\n", ft_printf("%0-3.3i", -8462));
-	printf("13: %i\n", printf("%2.9p\n", 1234));
-	printf("13: %i\n", ft_printf("%2.9p\n", 1234));
+
+	printf(" 13: %i\n", printf("%2.9p", 1234));
+	printf(" 13: %i\n", ft_printf("%2.9p", 1234));
 	printf("14: %i\n", printf("%.5p", 0));
 	printf("14: %i\n", ft_printf("%.5p", 0));
 	printf("15: %i\n", printf("%.0p", 0));
 	printf("15: %i\n\n", ft_printf("%.0p", 0));
+	
 	printf(" 16: %i\n", printf("%*.*s", -7, -3, "yolo"));
 	printf(" 16: %i\n", ft_printf("%*.*s", -7, -3, "yolo"));
 	printf(" 17: %i\n", printf("%*i", -4, 94827));

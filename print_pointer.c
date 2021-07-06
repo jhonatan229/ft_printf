@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/29 20:52:34 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:09:28 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	count_print_places(unsigned long int num, char *base, int sinal)
 
 static void	print_pointer(unsigned long int numb, int s_dot)
 {
-	ft_putstr_fd("0x", 1);
 	if (numb == 0)
 	{
 		if (s_dot == 0)
@@ -43,14 +42,23 @@ static void print_right_left(int dif, unsigned long int numb, int sinal, int s_d
 {
 	if (sinal == 1)
 	{
+		ft_putstr_fd("0x", 1);
 		print_pointer(numb, s_dot);
 		while (dif-- > 0)
 			ft_putchar_fd(' ', 1);
+	}
+	else if (sinal == 2)
+	{
+		ft_putstr_fd("0x", 1);
+		while (dif-- > 0)
+			ft_putchar_fd('0', 1);
+		print_pointer(numb, s_dot);
 	}
 	else
 	{
 		while (dif-- > 0)
 			ft_putchar_fd(' ', 1);
+		ft_putstr_fd("0x", 1);
 		print_pointer(numb, s_dot);
 	}
 }
@@ -69,6 +77,11 @@ void	set_pointer(va_list list, t_flags *flag)
 			print_right_left(flag->width - len_num, numb, 1, flag->dot);
 		else
 			print_right_left(flag->width - len_num, numb, 0, flag->dot);
+	}
+	else if ((flag->presition + 2) > len_num)
+	{
+		flag->return_len += flag->presition + 2;
+		print_right_left((flag->presition + 2) - len_num, numb, 2, flag->dot);
 	}
 	else
 	{

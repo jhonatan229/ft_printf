@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 13:38:07 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 13:46:46 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ static void	verify_type(va_list list, t_flags *flag)
 		set_integer(list, flag);
 	else if (c == 'u' || c == 'x' || c == 'X')
 		set_unsigned(list, flag);
+	else if (c == 'p')
+		set_pointer(list, flag);
+	else if (flag->width > 0)
+		only_width(flag);
 	else if (c == '%')
 	{
 		flag->return_len++;
 		ft_putchar_fd(c, 1);
 	}
-	else if (c == 'p')
-		set_pointer(list, flag);
-	else if (flag->width > 0)
-		only_width(flag);
 	set_flags(flag, 1);
 }
 
