@@ -28,5 +28,8 @@ void	set_string(va_list list, t_flags *flag);
 void	set_integer(va_list list, t_flags *flag);
 void	set_unsigned(va_list list, t_flags *flag);
 void	set_pointer(va_list list, t_flags *flag);
+int		count_print_pointer(unsigned long int num, char *base, int sinal);
+int		count_unsigned(unsigned int num, char *base, t_flags *flag);
+int		count_print_int(int num, char *base, int sinal, int len_print);
 
 #endif

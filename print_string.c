@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:30:40 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/01 16:42:27 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 19:06:26 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@ static void	align_str(char *str, t_flags *flag)
 	return ;
 }
 
+static void	print_str(char *str, t_flags *flag)
+{
+	if (flag->width > ft_strlen(str))
+	{
+		flag->return_len += flag->width;
+		align_str(str, flag);
+	}
+	else
+	{
+		flag->return_len += ft_strlen(str);
+		ft_putstr_fd(str, 1);
+	}
+}
+
 void	set_string(va_list list, t_flags *flag)
 {
 	char	*str;
@@ -56,15 +70,6 @@ void	set_string(va_list list, t_flags *flag)
 		str = ft_substr(str, 0, flag->presition);
 	else
 		str = ft_strdup(str);
-	if (flag->width > ft_strlen(str))
-	{
-		flag->return_len += flag->width;
-		align_str(str, flag);
-	}
-	else
-	{
-		flag->return_len += ft_strlen(str);
-		ft_putstr_fd(str, 1);
-	}
+	print_str(str, flag);
 	free(str);
 }
