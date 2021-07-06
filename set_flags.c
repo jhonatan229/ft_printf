@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 15:31:49 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 15:43:57 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	set_minus_zero(t_flags *flag)
 			flag->zero = 1;
 		flag->pos_str++;
 	}
-	if (flag->dot && flag->zero)
+	if (flag->sinal && flag->zero)
 		flag->zero = 0;
 }
 

@@ -6,12 +6,13 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 14:20:16 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 15:56:39 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
 static int	count_print_places(unsigned long int num, char *base, int sinal)
 {
@@ -68,8 +69,10 @@ void	set_pointer(va_list list, t_flags *flag)
 	unsigned long int	numb;
 	int	len_num;
 
+	len_num = 2;
 	numb = va_arg(list, unsigned long int);
-	len_num = count_print_places(numb, BASE_LOWER_HEXA, 0) + 2;
+	if (numb != 0)
+		len_num += count_print_places(numb, BASE_LOWER_HEXA, 0);
 	if (flag->width > len_num)
 	{
 		flag->return_len += flag->width;
