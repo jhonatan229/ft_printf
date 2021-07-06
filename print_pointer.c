@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 15:56:39 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 16:05:19 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static void	print_pointer(unsigned long int numb, int s_dot)
 
 static void print_right_left(int dif, unsigned long int numb, int sinal, int s_dot)
 {
+	if (numb == 0 && s_dot == 0)
+		dif--;
 	if (sinal == 1)
 	{
 		ft_putstr_fd("0x", 1);
