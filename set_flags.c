@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/30 11:49:16 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 13:32:22 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,20 @@ static void	set_minus_zero(t_flags *flag)
 	}
 }
 
+static void set_stars(t_flags *flag)
+{
+	if (flag->width < 0)
+	{
+		flag->sinal = 1;
+		flag->width *= -1;
+	}
+	if (flag->presition < 0)
+	{
+		flag->dot = 0;
+		flag->presition = 0;
+	}
+}
+
 void	pupulate_flags(va_list list, t_flags *flag)
 {
 	set_minus_zero(flag);
@@ -60,11 +74,7 @@ void	pupulate_flags(va_list list, t_flags *flag)
 				flag->presition = va_arg(list, int);
 			else
 				flag->width = va_arg(list, int);
-			if (flag->width < 0)
-			{
-				flag->sinal = 1;
-				flag->width *= -1;
-			}
+			set_stars(flag);
 		}
 		else if (ft_isdigit(flag->str[flag->pos_str]))
 			get_number(flag);

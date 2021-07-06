@@ -23,8 +23,11 @@ $(NAME): $(OBJ) $(LIB_PATH)
 $(OBJ): $(FILES)
 	$(CC) $(FLAGS) -c $(FILES)
 
+test01:
+	$(CC) test02.c $(NAME) && ./a.out
+
 test02:
-	$(CC) $(FLAGS) test.c $(NAME) && ./a.out
+	$(CC) test.c $(NAME) && ./a.out
 
 clean:
 	make clean -C $(LIB_PATH)

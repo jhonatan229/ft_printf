@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/30 21:46:01 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 13:38:07 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ static void	set_flags(t_flags *flags, int sinal)
 	flags->sinal = 0;
 	flags->width = 0;
 	flags->zero = 0;
+}
+
+static void only_width(t_flags *flag)
+{
+	int	point;
+
+	point = 0;
+	while (point++ < flag->width)
+		ft_putchar_fd(' ', 1);
+	flag->return_len += flag->width;
 }
 
 static void	verify_type(va_list list, t_flags *flag)
@@ -48,6 +58,8 @@ static void	verify_type(va_list list, t_flags *flag)
 	}
 	else if (c == 'p')
 		set_pointer(list, flag);
+	else if (flag->width > 0)
+		only_width(flag);
 	set_flags(flag, 1);
 }
 
