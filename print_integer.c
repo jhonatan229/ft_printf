@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 12:58:39 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:25:41 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,9 @@ static void	print_num(int num, int sinal, int len, t_flags *flag)
 	int	wid;
 
 	wid = 0;
-	if ((flag->width > 0 && flag->width > len)|| flag->presition > 0)
+	if ((flag->width > 0 && flag->width > len)|| flag->presition > len)
 	{
-		if (flag->presition < len)
-			flag->return_len += len;
-		else if (flag->presition > flag->width)
+		if (flag->presition > flag->width)
 			flag->return_len += flag->presition;
 		else
 			flag->return_len += flag->width;
