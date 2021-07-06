@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 13:46:46 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 14:55:03 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,33 @@ static void	set_flags(t_flags *flags, int sinal)
 	flags->zero = 0;
 }
 
-static void only_width(t_flags *flag)
+static void only_width(t_flags *flag, char c)
 {
-	int	point;
-
-	point = 0;
-	while (point++ < flag->width)
-		ft_putchar_fd(' ', 1);
-	flag->return_len += flag->width;
+	if (flag->width > 1)
+	{
+		flag->return_len += flag->width;
+		flag->width--;
+	}
+	else
+		flag->return_len++;
+	if (flag->sinal)
+	{
+		ft_putchar_fd(c, 1);
+		while (flag->width-- > 0)
+			ft_putchar_fd(' ', 1);
+	}
+	else if (flag->zero)
+	{
+		while (flag->width-- > 0)
+			ft_putchar_fd('0', 1);
+		ft_putchar_fd(c, 1);
+	}
+	else
+	{
+		while (flag->width-- > 0)
+			ft_putchar_fd(' ', 1);
+		ft_putchar_fd(c, 1);
+	}
 }
 
 static void	verify_type(va_list list, t_flags *flag)
@@ -53,13 +72,8 @@ static void	verify_type(va_list list, t_flags *flag)
 		set_unsigned(list, flag);
 	else if (c == 'p')
 		set_pointer(list, flag);
-	else if (flag->width > 0)
-		only_width(flag);
-	else if (c == '%')
-	{
-		flag->return_len++;
-		ft_putchar_fd(c, 1);
-	}
+	else
+		only_width(flag, c);
 	set_flags(flag, 1);
 }
 
