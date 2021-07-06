@@ -6,12 +6,13 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/06/30 13:04:01 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 15:32:23 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include "stdio.h"
 
 static int	count_places(unsigned int num, char *base, t_flags *flag)
 {
@@ -107,7 +108,7 @@ void	set_unsigned(va_list list, t_flags *flag)
 		len = count_places(numb, BASE_LOWER_HEXA, flag);
 	else if (flag->str[flag->pos_str] == 'X')
 		len = count_places(numb, BASE_UPPER_HEXA, flag);
-	if (flag->zero && !flag->dot)
+	if (flag->zero)
 		print_aling_rigth('0', len, numb, flag);
 	else if (flag->sinal)
 		print_aling_left(' ', len, numb, flag);

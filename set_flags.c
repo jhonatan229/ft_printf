@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 13:32:22 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 15:31:49 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,13 @@ static void	set_minus_zero(t_flags *flag)
 	while (flag->str[flag->pos_str] == '-' || flag->str[flag->pos_str] == '0')
 	{
 		if (flag->str[flag->pos_str] == '-')
-		{
 			flag->sinal = 1;
-			flag->zero = 0;
-			flag->pos_str++;
-			break ;
-		}
 		else
 			flag->zero = 1;
 		flag->pos_str++;
 	}
+	if (flag->dot && flag->zero)
+		flag->zero = 0;
 }
 
 static void set_stars(t_flags *flag)
