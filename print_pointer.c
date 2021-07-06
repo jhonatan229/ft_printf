@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 18:20:32 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 18:32:12 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	set_pointer(va_list list, t_flags *flag)
 	}
 	else
 	{
-		if (len_num == 2)
+		if (len_num == 2 && !flag->dot)
 			flag->return_len++;
 		flag->return_len += len_num;
 		ft_putstr_fd("0x", 1);
