@@ -80,8 +80,8 @@ int	main(void)
 	printf("1: %i\n", ft_printf("%5.p", NULL));
 	printf("2: %i\n", printf("-->|%-16.p|<-- ", NULL));
 	printf("2: %i\n", ft_printf("-->|%-16.p|<-- ", NULL));
-	//printf("3: %i\n", printf("%--198c" ,35));
-	//printf("3: %i\n", ft_printf("%--198c" ,35));
+	printf("3: %i\n", printf("%p", NULL));
+	printf("3: %i\n", ft_printf("%p", NULL));
 	//printf("4: %i\n", printf("|%020.18i|%013.9i|%-8X|%---45.36X|" ,-1748967713,-1568187420,124888334u,2293430389u));
 	//printf("4: %i\n", ft_printf("|%020.18i|%013.9i|%-8X|%---45.36X|" ,-1748967713,-1568187420,124888334u,2293430389u));
 	//printf("5: %i\n", printf("%--40.183X%-178.81X%036.192u%-119.27s" ,2684215029u,410939004u,2169426684u,"!ufvJeVr`+BF#EV"));
