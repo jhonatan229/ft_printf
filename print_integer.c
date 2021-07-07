@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/07 16:02:50 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/07 17:19:33 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,15 @@ static void	print_dif(int dif, char c, int sinal, int pos_or_neg)
 		if (sinal == 2)
 			ft_putchar_fd('-', 1);
 	}
-	else
+	else if (pos_or_neg == 3)
+	{
+		if (sinal == 1)
+			ft_putchar_fd(' ', 1);
 		while (dif-- > 0)
 			ft_putchar_fd(c, 1);
+		if (sinal == 2)
+			ft_putchar_fd(' ', 1);
+	}
 }
 
 static void	print_negative(int num, int len, int wid, t_flags *flag)
@@ -69,6 +75,8 @@ static void	print_positive(int num, int len, int wid, t_flags *flag)
 	int	press;
 
 	press = flag->presition - len;
+	if (flag->plus || flag->blank)
+		wid--;
 	if (press > 0)
 		wid -= press;
 	if (flag->sinal)
@@ -132,13 +140,15 @@ void	set_integer(va_list list, t_flags *flag)
 		if (num != -2147483648)
 			sinal = 1;
 	}
-	else if (flag->plus)
-		flag->return_len++;
 	else
 		sinal = 0;
 	if (flag->presition <= 0 && flag->dot && num == 0)
 		len = 0;
 	else
 		len = count_print_int(num, BASE_DESC, 0, 0);
+	if ((flag->plus || flag->blank)&& flag->width < len)
+		flag->return_len++;
+	if (!flag->plus && flag->blank)
+		flag->plus = 3;
 	print_num(num, sinal, len, flag);
 }
