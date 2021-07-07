@@ -22,6 +22,7 @@ typedef struct s_ft_printf
 	int		plus;
 	int		blank;
 	int		hashtag;
+	char	sinal_int;
 }				t_flags;
 
 int		ft_printf(const char *str, ...);

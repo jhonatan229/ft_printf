@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/07 14:52:50 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:12:46 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	set_flags(t_flags *flags, int sinal)
 	flags->blank = 0;
 	flags->hashtag = 0;
 	flags->plus = 0;
+	flags->sinal_int = 0;
 }
 
 static void	only_width(t_flags *flag, char c)

@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 13:55:43 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/07 17:24:56 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:14:16 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,27 @@ int main()
 	//printf("6: %i\n", ft_printf(" %+-03.1d ", 0));
 	//printf("7: %i\n", printf(" %+-03.2d ", 0));
 	//printf("7: %i\n", ft_printf(" %+-03.2d ", 0));
+	//printf("8: %i\n", printf(" %+d ", -1));
+	//printf("8: %i\n", ft_printf(" %+d ", -1));
+	//printf("21: %i\n", printf(" %+.d ", 0));
+	//printf("21: %i\n", ft_printf(" %+.d ", 0));
 
-	printf("1: %i\n", printf(" |% d| ", 253));
-	printf("1: %i\n", ft_printf(" |% d| ", 253));
-	printf("2: %i\n", printf(" |% 2d| ", 253));
-	printf("2: %i\n", ft_printf(" |% 2d| ", 253));
-	printf("3: %i\n", printf(" |% 02d ", 0));
-	printf("3: %i\n", ft_printf(" |% 02d ", 0));
-	//printf("4: %i\n", printf(" |% -03d ", 0));
-	//printf("5: %i\n", printf(" |% -03.d ", 0));
-	//printf("6: %i\n", printf(" |% -03.1d ", 0));
-	//printf("7: %i\n", printf(" |% -03.2d ", 0));
-	//printf("8: %i\n", printf(" % d ", -1));
+	//printf("1: %i\n", printf(" |% d| ", 253));
+	//printf("1: %i\n", ft_printf(" |% d| ", 253));
+	//printf("2: %i\n", printf(" |% 2d| ", 253));
+	//printf("2: %i\n", ft_printf(" |% 2d| ", 253));
+	//printf("3: %i\n", printf(" |% 02d ", 0));
+	//printf("3: %i\n", ft_printf(" |% 02d ", 0));
+	printf("4: %i\n", printf(" |% -03d ", 0));
+	printf("4: %i\n", ft_printf(" |% -03d ", 0));
+	printf("5: %i\n", printf(" |% -03.d ", 0));
+	printf("5: %i\n", ft_printf(" |% -03.d ", 0));
+	printf("6: %i\n", printf(" |% -03.1d ", 0));
+	printf("6: %i\n", ft_printf(" |% -03.1d ", 0));
+	printf("7: %i\n", printf(" |% -03.2d ", 0));
+	printf("7: %i\n", ft_printf(" |% -03.2d ", 0));
+	printf("8: %i\n", printf(" |% d ", -1));
+	printf("8: %i\n", ft_printf(" |% d ", -1));
 	//printf("9: %i\n", printf(" % 2d ", -1));
 	//printf("10: %i\n", printf(" % 02d ", -1));
 	//printf("11: %i\n", printf(" % 03d ", -1));
