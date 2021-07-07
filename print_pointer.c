@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 20:31:19 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/06 20:39:50 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_pointer(unsigned long int numb, int s_dot)
 			ft_putchar_fd('0', 1);
 	}
 	else
-		count_print_pointer(numb, BASE_LOWER_HEXA, 1);	
+		count_print_pointer(numb, BASE_LOWER_HEXA, 1);
 }
 
 static void	print_r_l(int dif, unsigned long int numb, int sinal, int s_dot)

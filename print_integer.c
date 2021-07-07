@@ -6,21 +6,37 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 19:38:11 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/07 16:02:50 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft/libft.h"
+#include <stdio.h>
 
-static void	print_dif(int dif, char c, int sinal)
+static void	print_dif(int dif, char c, int sinal, int pos_or_neg)
 {
-	if (sinal == 1)
-		ft_putchar_fd('-', 1);
-	while (dif-- > 0)
-		ft_putchar_fd(c, 1);
-	if (sinal == 2)
-		ft_putchar_fd('-', 1);
+	if (pos_or_neg == 1)
+	{
+		if (sinal == 1)
+			ft_putchar_fd('+', 1);
+		while (dif-- > 0)
+			ft_putchar_fd(c, 1);
+		if (sinal == 2)
+			ft_putchar_fd('+', 1);
+	}
+	else if (pos_or_neg == 2)
+	{
+		if (sinal == 1)
+			ft_putchar_fd('-', 1);
+		while (dif-- > 0)
+			ft_putchar_fd(c, 1);
+		if (sinal == 2)
+			ft_putchar_fd('-', 1);
+	}
+	else
+		while (dif-- > 0)
+			ft_putchar_fd(c, 1);
 }
 
 static void	print_negative(int num, int len, int wid, t_flags *flag)
@@ -34,20 +50,17 @@ static void	print_negative(int num, int len, int wid, t_flags *flag)
 	{
 		ft_putchar_fd('-', 1);
 		if (press > 0)
-			while (press-- > 0 )
-				ft_putchar_fd('0', 1);
+			print_dif(press, '0', 0, 2);
 		count_print_int(num, BASE_DESC, 1, len);
-		print_dif(wid, ' ', 0);
+		print_dif(wid, ' ', 0, 2);
 		return ;
 	}
-	else if (flag->zero && !flag->dot)
-		print_dif(wid, '0', 1);
+	if (flag->zero && !flag->dot)
+		print_dif(wid, '0', 1, 2);
 	else
-	{
-		print_dif(wid, ' ', 2);
-	}
+		print_dif(wid, ' ', 2, 2);
 	if (press > 0)
-		print_dif(press, '0', 0);
+		print_dif(press, '0', 0, 2);
 	count_print_int(num, BASE_DESC, 1, len);
 }
 
@@ -60,23 +73,20 @@ static void	print_positive(int num, int len, int wid, t_flags *flag)
 		wid -= press;
 	if (flag->sinal)
 	{
+		if (flag->plus)
+			ft_putchar_fd('+', 1);
 		if (press > 0)
-			while (press-- > 0 )
-				ft_putchar_fd('0', 1);
+			print_dif(press, '0', 0, flag->plus);
 		count_print_int(num, BASE_DESC, 1, len);
-		while (wid-- > 0)
-			ft_putchar_fd(' ', 1);
+		print_dif(wid, ' ', 0, flag->plus);
 		return ;
 	}
 	if (flag->zero && !flag->dot)
-		while (wid-- > 0)
-			ft_putchar_fd('0', 1);
+		print_dif(wid, '0', 1, flag->plus);
 	else
-		while (wid-- > 0)
-			ft_putchar_fd(' ', 1);
+		print_dif(wid, ' ', 2, flag->plus);
 	if (press > 0)
-		while (press-- > 0 )
-			ft_putchar_fd('0', 1);
+		print_dif(press, '0', 0, flag->plus);
 	count_print_int(num, BASE_DESC, 1, len);
 }
 
@@ -122,6 +132,8 @@ void	set_integer(va_list list, t_flags *flag)
 		if (num != -2147483648)
 			sinal = 1;
 	}
+	else if (flag->plus)
+		flag->return_len++;
 	else
 		sinal = 0;
 	if (flag->presition <= 0 && flag->dot && num == 0)

@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 18:51:13 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:48:29 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,23 @@ static void	get_number(t_flags *flag)
 
 static void	set_minus_zero(t_flags *flag)
 {
-	while (flag->str[flag->pos_str] == '-' || flag->str[flag->pos_str] == '0')
+	char	c;
+
+	c = flag->str[flag->pos_str];
+	while (c == '-' || c == '0' || c == '+'|| c == ' ' || c == '#')
 	{
 		if (flag->str[flag->pos_str] == '-')
 			flag->sinal = 1;
-		else
+		else if (flag->str[flag->pos_str] == '0')
 			flag->zero = 1;
+		else if (flag->str[flag->pos_str] == '+')
+			flag->plus = 1;
+		else if (flag->str[flag->pos_str] == ' ')
+			flag->blank = 1;
+		else if (flag->str[flag->pos_str] == '#')
+			flag->hashtag = 1;
 		flag->pos_str++;
+		c = flag->str[flag->pos_str];
 	}
 	if (flag->sinal && flag->zero)
 		flag->zero = 0;

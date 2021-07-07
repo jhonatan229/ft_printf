@@ -19,6 +19,9 @@ typedef struct s_ft_printf
 	int		dot;
 	int		zero;
 	int		return_len;
+	int		plus;
+	int		blank;
+	int		hashtag;
 }				t_flags;
 
 int		ft_printf(const char *str, ...);
@@ -31,5 +34,6 @@ void	set_pointer(va_list list, t_flags *flag);
 int		count_print_pointer(unsigned long int num, char *base, int sinal);
 int		count_unsigned(unsigned int num, char *base, t_flags *flag);
 int		count_print_int(int num, char *base, int sinal, int len_print);
+void	set_npointer(va_list list, t_flags *flag);
 
 #endif
