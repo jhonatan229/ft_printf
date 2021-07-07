@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/07 18:13:48 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:38:12 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,8 +139,7 @@ void	set_integer(va_list list, t_flags *flag)
 	num = va_arg(list, int);
 	if (num < 0)
 	{
-		if (!flag->plus && !flag->blank)
-			flag->return_len++;
+		flag->sinal_int = '-';
 		if (num != -2147483648)
 			sinal = 1;
 	}
@@ -150,7 +149,9 @@ void	set_integer(va_list list, t_flags *flag)
 		len = 0;
 	else
 		len = count_print_int(num, BASE_DESC, 0, 0);
-	if ((flag->plus || flag->blank)&& flag->width <= len)
+	if ((flag->sinal_int != 0)&& flag->width <= len)
+		flag->return_len++;
+	else if (flag->sinal_int == '-')
 		flag->return_len++;
 	if (!flag->plus && flag->blank)
 		flag->plus = 3;
