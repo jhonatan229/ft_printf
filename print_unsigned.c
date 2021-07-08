@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/08 14:12:09 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/08 14:41:56 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	print_hashtag(int numb, int len_numb, t_flags *flag, int sinal)
 	else if (sinal == 3)
 	{
 		if (flag->hashtag && numb != 0)
-			ft_putstr_fd("0x", 1);
+			ft_putstr_fd("0X", 1);
 		while (press-- > 0)
 			ft_putchar_fd('0', 1);
 		print_places(numb, BASE_UPPER_HEXA, len_numb, flag);
@@ -60,18 +60,21 @@ static void	print_hashtag(int numb, int len_numb, t_flags *flag, int sinal)
 static void	print_aling_rigth(char c, int len_numb, int numb, t_flags *flag)
 {
 	int	len;
+	int	press;
 	
 	if (flag->presition > len_numb)
-		len_numb = flag->presition;
-	if (flag->width > len_numb + flag->hashtag)
+		press = flag->presition;
+	else
+		press = len_numb;
+	if (flag->width > press + flag->hashtag)
 	{
 		flag->return_len += flag->width;
-		len = flag->width - (len_numb + flag->hashtag);
+		len = flag->width - (press + flag->hashtag);
 		while (len-- > 0)
 			ft_putchar_fd(c, 1);
 	}
 	else
-		flag->return_len += (len_numb + flag->hashtag);	
+		flag->return_len += (press + flag->hashtag);	
 	if (flag->str[flag->pos_str] == 'u')
 		print_hashtag(numb, len_numb, flag, 1);
 	else if (flag->str[flag->pos_str] == 'x')
@@ -89,7 +92,7 @@ static void	print_aling_left(char c, int len_numb, int numb, t_flags *flag)
 	else if (flag->str[flag->pos_str] == 'x')
 		print_hashtag(numb, len_numb, flag, 2);
 	else if (flag->str[flag->pos_str] == 'X')
-		print_hashtag(numb, len_numb, flag, 2);
+		print_hashtag(numb, len_numb, flag, 3);
 	if (flag->presition > len_numb)
 		len_numb = flag->presition;
 	if (flag->width > len_numb + flag->hashtag)
