@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 11:38:05 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 17:21:08 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,21 @@ static void	print_hashtag(int numb, int len_numb, t_flags *flag, int sinal)
 {
 	int	press;
 
-	press = flag->presition - len_numb;
+	press = (flag->presition - len_numb);
 	if (sinal == 1)
 	{
-		while (press-- > 0)
+		while (press-- > 0 )
 			ft_putchar_fd('0', 1);
 		print_places(numb, BASE_DESC, len_numb, flag);
 	}
 	else if (sinal == 2)
 	{
-		if (flag->hashtag && numb != 0)
-			ft_putstr_fd("0x", 1);
-		while (press-- > 0)
-			ft_putchar_fd('0', 1);
+		print_hash_hexa(numb, press, flag, len_numb);
 		print_places(numb, BASE_LOWER_HEXA, len_numb, flag);
 	}
 	else if (sinal == 3)
 	{
-		if (flag->hashtag && numb != 0)
-			ft_putstr_fd("0X", 1);
-		while (press-- > 0)
-			ft_putchar_fd('0', 1);
+		print_hash_hexa(numb, press, flag, len_numb);
 		print_places(numb, BASE_UPPER_HEXA, len_numb, flag);
 	}
 }
@@ -70,7 +64,7 @@ static void	print_aling_rigth(char c, int len_numb, int numb, t_flags *flag)
 	{
 		flag->return_len += flag->width;
 		len = flag->width - (press + flag->hashtag);
-		while (len-- > 0)
+		while (len-- > 0 && !flag->hashtag)
 			ft_putchar_fd(c, 1);
 	}
 	else
