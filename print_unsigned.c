@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 17:34:07 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 17:54:09 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ static void	print_hashtag(int numb, int len_numb, t_flags *flag, int sinal)
 	}
 	else if (sinal == 2)
 	{
-		print_hash_hexa(numb, press, flag, len_numb);
+		print_hash_hexa(numb, sinal, flag, len_numb);
 		print_places(numb, BASE_LOWER_HEXA, len_numb, flag);
 	}
 	else if (sinal == 3)
 	{
-		print_hash_hexa(numb, press, flag, len_numb);
+		print_hash_hexa(numb, sinal, flag, len_numb);
 		print_places(numb, BASE_UPPER_HEXA, len_numb, flag);
 	}
 }

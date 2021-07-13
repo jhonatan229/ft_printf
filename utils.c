@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:23:20 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 17:30:43 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 17:56:06 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,23 @@ void	set_diff_int(int mark, int diff, char c, char sinal)
 		ft_putchar_fd(sinal, 1);
 }
 
-void	print_hash_hexa(int numb, int press, t_flags *flag, int len)
+void	print_hash_hexa(int numb, int sinal, t_flags *flag, int len)
 {
 	int	wid;
+	int	press;
 
+	press = flag->presition - len;
 	if (flag->presition > len)
 		wid = flag->width - (flag->presition + flag->hashtag);
 	else
 		wid = flag->width - (len + flag->hashtag);
 	if (flag->hashtag && numb != 0)
-		ft_putstr_fd("0X", 1);
+	{
+		if (sinal == 2)
+			ft_putstr_fd("0x", 1);
+		else
+			ft_putstr_fd("0X", 1);
+	}		
 	if (flag->zero && !flag->dot)
 		while (wid-- > 0)
 			ft_putchar_fd('0', 1);

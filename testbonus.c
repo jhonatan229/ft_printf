@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/07 13:55:43 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 17:28:22 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 17:57:06 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ int main()
 	printf("15: %i\n", ft_printf(" %#-03.2x ", 1));
 	printf("16: %i\n", printf(" %#-03.*x ", 2, 1));
 	printf("16: %i\n", ft_printf(" %#-03.*x ", 2, 1));
-	printf("17: %i\n", printf("%#05x", 43));
-	printf("17: %i\n", ft_printf("%#05x", 43));
-	printf("17: %i\n", printf("%#08.5x", 34));
-	printf("17: %i\n", ft_printf("%#08.5x", 34));
+	printf("17: %i\n", printf("%#5x", 7));
+	printf("17: %i\n", ft_printf("%#5x", 7));
+	printf("17: %i\n", printf("%#7x", 33));
+	printf("17: %i\n", ft_printf("%#7x", 33));
 }
