@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:23:20 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 17:21:41 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 17:30:43 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	print_hash_hexa(int numb, int press, t_flags *flag, int len)
 		wid = flag->width - (len + flag->hashtag);
 	if (flag->hashtag && numb != 0)
 		ft_putstr_fd("0X", 1);
-	if (flag->zero)
+	if (flag->zero && !flag->dot)
 		while (wid-- > 0)
 			ft_putchar_fd('0', 1);
 	while (press-- > 0 )

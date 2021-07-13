@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 17:21:08 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 17:34:07 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	print_aling_rigth(char c, int len_numb, int numb, t_flags *flag)
 	{
 		flag->return_len += flag->width;
 		len = flag->width - (press + flag->hashtag);
-		while (len-- > 0 && !flag->hashtag)
+		while (len-- > 0 && c != '0')
 			ft_putchar_fd(c, 1);
 	}
 	else
