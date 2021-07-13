@@ -36,5 +36,6 @@ int		count_print_pointer(unsigned long int num, char *base, int sinal);
 int		count_unsigned(unsigned int num, char *base, t_flags *flag);
 int		count_print_int(int num, char *base, int sinal, int len_print);
 void	set_npointer(va_list list, t_flags *flag);
+void	set_diff_int(int mark, int diff, char c, char sinal);
 
 #endif

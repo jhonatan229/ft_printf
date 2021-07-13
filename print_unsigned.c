@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/08 14:41:56 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 11:38:05 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	print_places(unsigned int num, char *base, int len, t_flags *flag)
 
 static void	print_hashtag(int numb, int len_numb, t_flags *flag, int sinal)
 {
-	int press;
+	int	press;
 
 	press = flag->presition - len_numb;
 	if (sinal == 1)
@@ -61,7 +61,7 @@ static void	print_aling_rigth(char c, int len_numb, int numb, t_flags *flag)
 {
 	int	len;
 	int	press;
-	
+
 	if (flag->presition > len_numb)
 		press = flag->presition;
 	else
@@ -74,7 +74,7 @@ static void	print_aling_rigth(char c, int len_numb, int numb, t_flags *flag)
 			ft_putchar_fd(c, 1);
 	}
 	else
-		flag->return_len += (press + flag->hashtag);	
+		flag->return_len += (press + flag->hashtag);
 	if (flag->str[flag->pos_str] == 'u')
 		print_hashtag(numb, len_numb, flag, 1);
 	else if (flag->str[flag->pos_str] == 'x')

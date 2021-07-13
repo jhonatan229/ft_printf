@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/07 18:38:12 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 11:45:12 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,17 @@ static void	print_dif(int dif, char c, int sinal, int pos_or_neg)
 {
 	if (pos_or_neg == 1)
 	{
-		if (sinal == 1)
-			ft_putchar_fd('+', 1);
-		while (dif-- > 0)
-			ft_putchar_fd(c, 1);
-		if (sinal == 2)
-			ft_putchar_fd('+', 1);
+		set_diff_int(sinal, dif, c, '+');
 	}
 	else if (pos_or_neg == 2)
 	{
-		if (sinal == 1)
-			ft_putchar_fd('-', 1);
-		while (dif-- > 0)
-			ft_putchar_fd(c, 1);
-		if (sinal == 2)
-			ft_putchar_fd('-', 1);
+		set_diff_int(sinal, dif, c, '-');
 	}
 	else if (pos_or_neg == 3)
 	{
-		if (sinal == 1)
-			ft_putchar_fd(' ', 1);
-		while (dif-- > 0)
-			ft_putchar_fd(c, 1);
-		if (sinal == 2)
-			ft_putchar_fd(' ', 1);
+		set_diff_int(sinal, dif, c, ' ');
 	}
-	else 
+	else
 		while (dif-- > 0)
 			ft_putchar_fd(c, 1);
 }
@@ -149,7 +134,7 @@ void	set_integer(va_list list, t_flags *flag)
 		len = 0;
 	else
 		len = count_print_int(num, BASE_DESC, 0, 0);
-	if ((flag->sinal_int != 0)&& flag->width <= len)
+	if ((flag->sinal_int != 0) && flag->width <= len)
 		flag->return_len++;
 	else if (flag->sinal_int == '-')
 		flag->return_len++;

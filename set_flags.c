@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/08 14:04:34 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 11:39:30 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	set_minus_zero(t_flags *flag)
 	char	c;
 
 	c = flag->str[flag->pos_str];
-	while (c == '-' || c == '0' || c == '+'|| c == ' ' || c == '#')
+	while (c == '-' || c == '0' || c == '+' || c == ' ' || c == '#')
 	{
 		if (flag->str[flag->pos_str] == '-')
 			flag->sinal = 1;
