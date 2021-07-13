@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:23:20 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 11:46:22 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 13:10:24 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	set_diff_int(int mark, int diff, char c, char sinal)
 {
 	if (mark == 1)
 		ft_putchar_fd(sinal, 1);
-	while (dif-- > 0)
+	while (diff-- > 0)
 		ft_putchar_fd(c, 1);
 	if (mark == 2)
 		ft_putchar_fd(sinal, 1);
