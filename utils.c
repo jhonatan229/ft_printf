@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:23:20 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 17:56:06 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/13 18:15:24 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	print_hash_hexa(int numb, int sinal, t_flags *flag, int len)
 	{
 		if (sinal == 2)
 			ft_putstr_fd("0x", 1);
-		else
+		else if (sinal == 3)
 			ft_putstr_fd("0X", 1);
 	}		
 	if (flag->zero && !flag->dot)
