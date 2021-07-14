@@ -6,28 +6,20 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 11:16:33 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 11:45:12 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:23:42 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
-#include <stdio.h>
+#include "../ft_printf.h"
 
 static void	print_dif(int dif, char c, int sinal, int pos_or_neg)
 {
 	if (pos_or_neg == 1)
-	{
 		set_diff_int(sinal, dif, c, '+');
-	}
 	else if (pos_or_neg == 2)
-	{
 		set_diff_int(sinal, dif, c, '-');
-	}
 	else if (pos_or_neg == 3)
-	{
 		set_diff_int(sinal, dif, c, ' ');
-	}
 	else
 		while (dif-- > 0)
 			ft_putchar_fd(c, 1);
@@ -122,14 +114,13 @@ void	set_integer(va_list list, t_flags *flag)
 	int	sinal;
 
 	num = va_arg(list, int);
+	sinal = 0;
 	if (num < 0)
 	{
 		flag->sinal_int = '-';
 		if (num != -2147483648)
 			sinal = 1;
 	}
-	else
-		sinal = 0;
 	if (flag->presition <= 0 && flag->dot && num == 0)
 		len = 0;
 	else

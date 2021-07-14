@@ -1,40 +1,58 @@
+LIBFT_PATH = libft
+
+LIBFT = $(LIBFT_PATH)/libft.a
+
 NAME = libftprintf.a
 
-LIB = libft.a
+SRCS_PATH = srcs
 
-LIB_PATH = ./libft/
+SRCS = $(SRCS_PATH)/ft_printf.c \
+		$(SRCS_PATH)/set_flags.c \
+		$(SRCS_PATH)/print_char.c \
+		$(SRCS_PATH)/print_string.c \
+		$(SRCS_PATH)/print_integer.c \
+		$(SRCS_PATH)/print_unsigned.c \
+		$(SRCS_PATH)/print_pointer.c \
+		$(SRCS_PATH)/utils.c \
 
-FILES = ft_printf.c set_flags.c print_char.c print_string.c print_integer.c print_unsigned.c print_pointer.c utils.c
+OBJS_PATH = objs
 
-OBJ = ft_printf.o set_flags.o print_char.o print_string.o print_integer.o print_unsigned.o print_pointer.o utils.o
+TESTS_PATH = tests/
+
+OBJS = $(patsubst $(SRCS_PATH)%.c, $(OBJS_PATH)/%.o, $(SRCS))
+
+WHERE = .
 
 CC = clang
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+RM = rm -rf
+
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIB_PATH)
-	make -C $(LIB_PATH) $(LIB)
-	cp $(LIB_PATH)$(LIB) .
-	mv $(LIB) $(NAME)
-	ar -rcs $(NAME) $(OBJ)
+$(NAME):	$(OBJS)
+	@make -C $(LIBFT_PATH)
+	cp $(LIBFT) $(NAME)
+	mv $(LIBFT) $(NAME)
+	ar rc $(NAME) $(OBJS)
 
-$(OBJ): $(FILES)
-	$(CC) $(FLAGS) -c $(FILES)
+$(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.c
+	@mkdir -p $(OBJS_PATH)
+	$(CC) $(CFLAGS)  -I. -I/$(LIBFT_PATH) -c $< -o $@
 
-bonus:
-	$(CC) testbonus.c $(NAME) && ./a.out
+bonus: all
 
-test01:
-	$(CC) test02.c $(NAME) && ./a.out
-
-test02:
-	$(CC) test.c $(NAME) && ./a.out
+test01: $(NAME)
+	$(CC) $(TESTS_PATH)test.c $(NAME) && ./a.out
 
 clean:
-	make clean -C $(LIB_PATH)
-	rm $(OBJ)
+	@make clean -C $(LIBFT_PATH)
+	$(RM) $(OBJS_PATH)
 
 fclean: clean
-	rm $(NAME)
+	@make fclean -C $(LIBFT_PATH)
+	$(RM) $(NAME) libft.a
+
+re: fclean all
+

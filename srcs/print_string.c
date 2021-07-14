@@ -6,12 +6,11 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:30:40 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 19:06:26 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:20:39 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../ft_printf.h"
 
 static void	align_str(char *str, t_flags *flag)
 {
@@ -38,7 +37,7 @@ static void	align_str(char *str, t_flags *flag)
 
 static void	print_str(char *str, t_flags *flag)
 {
-	if (flag->width > ft_strlen(str))
+	if (flag->width > (int)ft_strlen(str))
 	{
 		flag->return_len += flag->width;
 		align_str(str, flag);

@@ -6,12 +6,11 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 11:36:52 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:17:41 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../ft_printf.h"
 
 static void	set_flags(t_flags *flags, int sinal)
 {

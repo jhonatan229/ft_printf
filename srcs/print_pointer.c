@@ -6,12 +6,11 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/06 20:39:50 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:18:16 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../ft_printf.h"
 
 static void	print_pointer(unsigned long int numb, int s_dot)
 {

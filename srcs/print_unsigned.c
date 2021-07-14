@@ -6,13 +6,11 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/13 18:15:50 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/14 15:18:42 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include "libft/libft.h"
-#include <stdio.h>
+#include "../ft_printf.h"
 
 static int	print_places(unsigned int num, char *base, int len, t_flags *flag)
 {

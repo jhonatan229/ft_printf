@@ -1,5 +1,4 @@
-#include "ft_printf.h"
-#include "libft/libft.h"
+#include "../ft_printf.h"
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
