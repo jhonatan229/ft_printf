@@ -6,12 +6,15 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:23:20 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/16 13:56:41 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/16 19:03:40 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
+//serves to count or print(in hexadecimal base) depending of my sinal
+//if sinal = 1: print number and return the number of places
+//if sinal != 1: only return number of places
 int	count_print_pointer(unsigned long int num, char *base, int sinal)
 {
 	int	count;
@@ -26,6 +29,7 @@ int	count_print_pointer(unsigned long int num, char *base, int sinal)
 	return (count);
 }
 
+//serves to count(in hexadecimal base or decimal base).
 int	count_unsigned(unsigned int num, char *base, t_flags *flag)
 {
 	int	count;
@@ -40,6 +44,9 @@ int	count_unsigned(unsigned int num, char *base, t_flags *flag)
 	return (count);
 }
 
+//serves to count or print(in decimal base) depending of my sinal
+//if sinal = 1: print number and return the number of places
+//if sinal != 1: only return number of places
 int	count_print_int(int num, char *base, int sinal, int len_print)
 {
 	int	len_base;
@@ -47,7 +54,7 @@ int	count_print_int(int num, char *base, int sinal, int len_print)
 
 	count = 1;
 	len_base = ft_strlen(base);
-	if (num < 0 )
+	if (num < 0)
 	{
 		if (num == -2147483648)
 		{
@@ -64,6 +71,9 @@ int	count_print_int(int num, char *base, int sinal, int len_print)
 	return (count);
 }
 
+//will print the char c (diff) times,
+//if mark = 1: print char sinal before 'c'
+//if mark = 2: print char sinal after 'c'
 void	set_diff_int(int mark, int diff, char c, char sinal)
 {
 	if (mark == 1)
@@ -74,6 +84,7 @@ void	set_diff_int(int mark, int diff, char c, char sinal)
 		ft_putchar_fd(sinal, 1);
 }
 
+//print "0x" in the rigth place, is sinal is equal 2 or 3
 void	print_hash_hexa(int numb, int sinal, t_flags *flag, int len)
 {
 	int	wid;
