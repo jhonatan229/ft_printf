@@ -6,12 +6,14 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 10:33:42 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/14 15:17:41 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/16 12:44:18 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
+//going to set my struct with the information of flags and something else to 0,
+//but only one time to pos_str(position of string) and return_len(the len of my string).
 static void	set_flags(t_flags *flags, int sinal)
 {
 	if (sinal == 0)
@@ -30,8 +32,11 @@ static void	set_flags(t_flags *flags, int sinal)
 	flags->sinal_int = 0;
 }
 
+//if there is no type before "%", print the quantity of my width based on flags that are ON
 static void	only_width(t_flags *flag, char c)
 {
+	//goig to add this quantity in my return_len
+	//if my width does not exist, will add only one in my return, because the char probably is a "%" or any other type that i didn't treat yet.
 	if (flag->width > 1)
 	{
 		flag->return_len += flag->width;
@@ -59,6 +64,8 @@ static void	only_width(t_flags *flag, char c)
 	}
 }
 
+//will verify the char after"%" or the flags, and check if match with any type that already treated.
+//if the char don't match, will call the function above (only_width).
 static void	verify_type(va_list list, t_flags *flag)
 {
 	char	c;
@@ -80,11 +87,14 @@ static void	verify_type(va_list list, t_flags *flag)
 	set_flags(flag, 1);
 }
 
+//will print a string "str" with the variables, if there is any type in my string "str", (ex: %i, %p ...).
+//return the length of "str" with the modifications.
 int	ft_printf(const char *str, ...)
 {
 	va_list	list;
 	t_flags	flags;
 
+	//sets my flags to 0, included the pos_str and return_len, that variables will be set only one time.
 	set_flags(&flags, 0);
 	flags.str = ft_substr(str, 0, ft_strlen(str));
 	va_start(list, str);

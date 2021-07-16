@@ -55,4 +55,3 @@ fclean: clean
 	$(RM) $(NAME) libft.a
 
 re: fclean all
-
