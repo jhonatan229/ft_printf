@@ -6,12 +6,13 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:13:06 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/14 15:17:50 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/16 12:49:31 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_printf.h"
 
+//Print the characters, based on my flags that are ON.
 void	set_char(va_list list, t_flags *flag)
 {
 	int	point;

@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 19:23:20 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/14 15:19:08 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/16 13:56:41 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	count_unsigned(unsigned int num, char *base, t_flags *flag)
 
 	len_base = ft_strlen(base);
 	count = 1;
-	if (flag->presition <= 0 && flag->dot && num == 0)
+	if (flag->precision <= 0 && flag->dot && num == 0)
 		return (0);
 	if (num / len_base > 0)
 		count += count_unsigned(num / len_base, base, flag);
@@ -79,9 +79,9 @@ void	print_hash_hexa(int numb, int sinal, t_flags *flag, int len)
 	int	wid;
 	int	press;
 
-	press = flag->presition - len;
-	if (flag->presition > len)
-		wid = flag->width - (flag->presition + flag->hashtag);
+	press = flag->precision - len;
+	if (flag->precision > len)
+		wid = flag->width - (flag->precision + flag->hashtag);
 	else
 		wid = flag->width - (len + flag->hashtag);
 	if (flag->hashtag && numb != 0)

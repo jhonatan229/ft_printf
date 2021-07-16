@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 14:45:05 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/14 15:18:16 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/16 13:56:06 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ static void	align_print(int len_num, unsigned long int numb, t_flags *flag)
 		else
 			print_r_l(flag->width - len_num, numb, 0, flag->dot);
 	}
-	else if ((flag->presition + 2) > len_num)
+	else if ((flag->precision + 2) > len_num)
 	{
-		flag->return_len += flag->presition + 2;
-		print_r_l((flag->presition + 2) - len_num, numb, 2, flag->dot);
+		flag->return_len += flag->precision + 2;
+		print_r_l((flag->precision + 2) - len_num, numb, 2, flag->dot);
 	}
 	else
 	{

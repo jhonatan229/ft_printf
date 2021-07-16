@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 19:23:49 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/14 15:18:42 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/16 13:56:25 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	print_hashtag(int numb, int len_numb, t_flags *flag, int sinal)
 {
 	int	press;
 
-	press = (flag->presition - len_numb);
+	press = (flag->precision - len_numb);
 	if (sinal == 1)
 	{
 		print_hash_hexa(numb, sinal, flag, len_numb);
@@ -53,8 +53,8 @@ static void	print_aling_rigth(char c, int len_numb, int numb, t_flags *flag)
 	int	len;
 	int	press;
 
-	if (flag->presition > len_numb)
-		press = flag->presition;
+	if (flag->precision > len_numb)
+		press = flag->precision;
 	else
 		press = len_numb;
 	if (flag->width > press + flag->hashtag)
@@ -84,8 +84,8 @@ static void	print_aling_left(char c, int len_numb, int numb, t_flags *flag)
 		print_hashtag(numb, len_numb, flag, 2);
 	else if (flag->str[flag->pos_str] == 'X')
 		print_hashtag(numb, len_numb, flag, 3);
-	if (flag->presition > len_numb)
-		len_numb = flag->presition;
+	if (flag->precision > len_numb)
+		len_numb = flag->precision;
 	if (flag->width > len_numb + flag->hashtag)
 	{
 		flag->return_len += flag->width;

@@ -15,7 +15,7 @@ typedef struct s_ft_printf
 	char	*str;
 	int		pos_str;
 	int		width;
-	int		presition;
+	int		precision;
 	int		sinal;
 	int		dot;
 	int		zero;

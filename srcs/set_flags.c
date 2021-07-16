@@ -6,7 +6,7 @@
 /*   By: jestevam < jestevam@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:33:45 by jestevam          #+#    #+#             */
-/*   Updated: 2021/07/14 15:18:50 by jestevam         ###   ########.fr       */
+/*   Updated: 2021/07/16 13:56:31 by jestevam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	get_number(t_flags *flag)
 		flag->pos_str++;
 	str = ft_substr(flag->str, start, flag->pos_str);
 	if (flag->dot)
-		flag->presition = ft_atoi(str);
+		flag->precision = ft_atoi(str);
 	else
 		flag->width = ft_atoi(str);
 	flag->pos_str--;
@@ -64,10 +64,10 @@ static void	set_stars(t_flags *flag)
 		flag->sinal = 1;
 		flag->width *= -1;
 	}
-	if (flag->presition < 0)
+	if (flag->precision < 0)
 	{
 		flag->dot = 0;
-		flag->presition = 0;
+		flag->precision = 0;
 	}
 }
 
@@ -81,7 +81,7 @@ void	pupulate_flags(va_list list, t_flags *flag)
 		else if (flag->str[flag->pos_str] == '*')
 		{
 			if (flag->dot)
-				flag->presition = va_arg(list, int);
+				flag->precision = va_arg(list, int);
 			else
 				flag->width = va_arg(list, int);
 			set_stars(flag);
